@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/pokemon-search/static/css/main.6c97c3eb.css",
-    "main.js": "/pokemon-search/static/js/main.a48d6550.js",
-    "static/js/787.75b7363b.chunk.js": "/pokemon-search/static/js/787.75b7363b.chunk.js",
-    "index.html": "/pokemon-search/index.html",
-    "main.6c97c3eb.css.map": "/pokemon-search/static/css/main.6c97c3eb.css.map",
-    "main.a48d6550.js.map": "/pokemon-search/static/js/main.a48d6550.js.map",
-    "787.75b7363b.chunk.js.map": "/pokemon-search/static/js/787.75b7363b.chunk.js.map"
+    "main.css": "/subvisual-coding-challenge-pokemon-search/static/css/main.6c97c3eb.css",
+    "main.js": "/subvisual-coding-challenge-pokemon-search/static/js/main.fbe570a8.js",
+    "static/js/787.13c6e24b.chunk.js": "/subvisual-coding-challenge-pokemon-search/static/js/787.13c6e24b.chunk.js",
+    "index.html": "/subvisual-coding-challenge-pokemon-search/index.html",
+    "main.6c97c3eb.css.map": "/subvisual-coding-challenge-pokemon-search/static/css/main.6c97c3eb.css.map",
+    "main.fbe570a8.js.map": "/subvisual-coding-challenge-pokemon-search/static/js/main.fbe570a8.js.map",
+    "787.13c6e24b.chunk.js.map": "/subvisual-coding-challenge-pokemon-search/static/js/787.13c6e24b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6c97c3eb.css",
-    "static/js/main.a48d6550.js"
+    "static/js/main.fbe570a8.js"
   ]
 }
