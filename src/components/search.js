@@ -92,6 +92,7 @@ const Search = (props) => {
 
   return (
     <div className="search-bar-container">
+    <div className="search-control">
       <input
         type="text"
         className="search-input"
@@ -111,6 +112,7 @@ const Search = (props) => {
         Search
       </button>
       {renderAutocomplete()}
+      </div>
     </div>
   );
 };
