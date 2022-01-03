@@ -50,7 +50,7 @@ const Search = (props) => {
     setIsShow(false);
     setSearch(e.currentTarget.innerText);
   };
-  // Press enter to select from dropdown
+// Use up and down arrow and press enter to select from dropdown
   const onKeyDown = (e) => {
     if (e.keyCode === 13) {
       // enter key
