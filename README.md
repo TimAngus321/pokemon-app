@@ -4,7 +4,7 @@
 
 - Web page that allows user to enter a pokemon name
 
-- SUbmit a query to Pokeapi and display the given pokémon's name, number, sprite or error message if no match is found
+- Submit a query to Pokeapi and display the given pokémon's name, number, sprite or error message if no match is found
 
 - Provide “Previous” & “Next” buttons, that switch to the previous/next pokemons, base on their id number
 
@@ -12,7 +12,7 @@
 
 **Unable to complete in time:**
 
-- Have at least two automated tests, for the two features above. (Will try to add soon)
+- Have at least two automated tests, for the two features above. 
 
 ## Deployment
 
@@ -43,4 +43,10 @@ yarn add react-toastify
 yarn add @fortawesome/fontawesome-svg-core
 yarn add @fortawesome/free-solid-svg-icons
 yarn add @fortawesome/react-fontawesome
+```
+
+### Run a local server
+
+```
+yarn start
 ```
