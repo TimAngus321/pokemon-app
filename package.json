@@ -1,6 +1,6 @@
 {
-  "homepage": "https://timangus321.github.io/pokemon-search",
-  "name": "subvisual-coding-challenge-pokemon-search",
+  "homepage": "https://timangus321.github.io/subvisual-coding-challenge-pokemon-search/",
+  "name": "pokemon-search",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
