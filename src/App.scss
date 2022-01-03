@@ -58,3 +58,19 @@ input {
 .autocomplete li:not(:last-of-type) {
   border-bottom: 1px solid #999;
 }
+
+/************ Arrow Buttons ***************/
+
+.arrows-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+ 
+.left-arrow-container {
+  cursor: pointer;
+}
+
+.right-arrow-container {
+  cursor: pointer;
+}
