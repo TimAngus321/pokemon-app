@@ -1,10 +1,10 @@
 import "./App.scss";
-import { useState, useEffect, useCallback, Fragment } from 'react';
-import {getBulbasaur} from './services/get-bulbasaur';
-import Spinner from './components/spinner';
+import { useState, useEffect, useCallback, Fragment } from "react";
+import { getBulbasaur } from "./services/get-bulbasaur";
+import Spinner from "./components/spinner";
 import PokemonCard from "components/pokemon-card";
-import Search from './components/search';
-import axios from 'axios';
+import Search from "./components/search";
+import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
@@ -13,14 +13,12 @@ import PreviousArrow from "./components/previous-arrow";
 import { getPokemonNames } from "services/get-pokemon-names";
 
 function App() {
-
   const [pokemon, setPokemon] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [pokeUrls, setPokeUrls] = useState([]);
-  const [loadingUrls, setLoadingUrls] = useState(false)
-
+  const [loadingUrls, setLoadingUrls] = useState(false);
 
   const pokeUrl = `https://pokeapi.co/api/v2/pokemon/`;
 
@@ -42,8 +40,8 @@ function App() {
     })();
   }, []);
 
-   // Get queried pokemon here
-   async function pokemonSearch(search) {
+  // Get queried pokemon here
+  async function pokemonSearch(search) {
     if (!search) {
       setError(true);
       setErrorMsg("You must enter a Pokemon Name");
@@ -103,8 +101,6 @@ function App() {
   if (!isLoading) {
     pokeUrls.map((pokeName) => allPokeUrls.push(pokeName.url));
   }
-
-
 
   // Get up to date last pokemon Id - when more pokemon are added this should stay relevant
   async function getLastPokeId() {
@@ -197,24 +193,23 @@ function App() {
       }
     });
   }
- 
-
-
 
   return (
     <div className="app-container">
-    <ToastContainer />
+      <ToastContainer />
       <div className="left-action-components">
-        <h2 className="app-header">Search That Pokémon!</h2>
-        <div className="arrows-container">
-          {pokemon ? (
-            <Fragment>
-              <PreviousArrow previousPokemon={previousPokemon} />
-              <NextArrow nextPokemon={nextPokemon} />
-            </Fragment>
-          ) : null}
+        <div className="action-components-container">
+          <h2 className="app-header">Search That Pokémon!</h2>
+          <div className="arrows-container">
+            {pokemon ? (
+              <Fragment>
+                <PreviousArrow previousPokemon={previousPokemon} />
+                <NextArrow nextPokemon={nextPokemon} />
+              </Fragment>
+            ) : null}
+          </div>
+          <Search pokemonSearch={pokemonSearch} />
         </div>
-      <Search pokemonSearch={pokemonSearch} />
       </div>
 
       <div className="right-components">

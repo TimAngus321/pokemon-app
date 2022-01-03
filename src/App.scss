@@ -25,38 +25,68 @@
   align-items: center;
 }
 
-/************ Autocomplete ***************/
+/************ Pokemon Card ***************/
 
-input {
-  border: 1px solid #999;
-  padding: 8px;
+.pokemon-card {
   width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid #FEEDBD;
+  border-radius: 15px;
 }
-.no-autocomplete {
-  color: #999;
-  padding: 8px;
+
+.pokemon-card-container {
+  height: 100%;
+  width: 80%;
+  justify-content: center;
+  align-content: space-around;
+  align-items: space-around;
 }
-.autocomplete {
-  position: absolute;
-  border: 1px solid #999;
-  border-top-width: 0;
-  list-style: none;
-  margin-top: 0;
-  overflow-y: auto;
-  padding-left: 0;
-  width: calc(300px + 1rem);
+
+.name-number-container {
+  display: flex;
+  justify-content: space-between;
+  height: 20%;
 }
-.autocomplete li {
-  padding: 8px;
+
+.sprite-container {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.autocomplete > .active,
-.autocomplete li:hover {
-  background-color: darkgray;
-  cursor: pointer;
-  font-weight: 700;
+
+img.pokemon-sprite {
+  width: 150px;
+  height: 150px;
 }
-.autocomplete li:not(:last-of-type) {
-  border-bottom: 1px solid #999;
+
+.type-container {
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: flex-end;
+}
+
+/************ Left Side Componets Layout ***************/
+
+.action-components-container {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-between;
+}
+
+.app-header {
+  display: flex;
+  justify-content: center;
+  height: 20%;
 }
 
 /************ Arrow Buttons ***************/
@@ -73,4 +103,87 @@ input {
 
 .right-arrow-container {
   cursor: pointer;
+}
+
+.arrows-container {
+  display: flex;
+  height: 20%;
+  justify-content: center;
+}
+
+/************ Search Component ***************/
+
+.search-bar-container {
+  display: flex;
+  height: 60%;
+  width: 100%;
+}
+
+.search-control {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  align-self: center;
+  justify-content: center;
+  height: 3.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid #E7E7E7;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.search-button {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  position: absolute;
+  right: 8px;
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 8px 24px;
+  border-radius: 4px;
+}
+
+/************ Autocomplete ***************/
+
+input {
+  padding: 8px;
+  width: 300px;
+  height: 20px;
+  border: none;
+}
+.no-autocomplete {
+  color: #999;
+  padding: 8px;
+}
+.autocomplete {
+  position: absolute;
+  border: 1px solid #999;
+  border-top-width: 0;
+  list-style: none;
+  margin-top: 0;
+  overflow-y: auto;
+  padding-left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  top: 145px;
+}
+.autocomplete li {
+  padding: 8px;
+}
+.autocomplete > .active,
+.autocomplete li:hover {
+  background-color: darkgray;
+  cursor: pointer;
+  font-weight: 700;
+}
+.autocomplete li:not(:last-of-type) {
+  border-bottom: 1px solid #999;
 }
