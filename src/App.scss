@@ -1,0 +1,26 @@
+/************ Layout & Basic Setup ***************/
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.left-action-components {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 40px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.right-components {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 40px;
+  justify-content: center;
+  align-items: center;
+}
