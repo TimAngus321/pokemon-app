@@ -1,6 +1,5 @@
 # Subvisual Coding Challenge
 
-
 **Pokemon Search is a react app that performs the following taks:**
 
 - Web page that allows user to enter a pokemon name
@@ -41,4 +40,3 @@ git clone https://github.com/TimAngus321/subvisual-coding-challenge-pokemon-sear
 - yarn add @fortawesome/fontawesome-svg-core
 - yarn add @fortawesome/free-solid-svg-icons
 - yarn add @fortawesome/react-fontawesome
-
