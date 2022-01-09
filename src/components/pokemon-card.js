@@ -2,6 +2,7 @@ import React from "react";
 import typeColours from "helpers/type-colours.js";
 
 const PokemonCard = ({ pokeName, pokeId, pokeImg, pokemonDetails }) => {
+
   return (
     <div
       className="pokemon-card"
@@ -12,7 +13,7 @@ const PokemonCard = ({ pokeName, pokeId, pokeImg, pokemonDetails }) => {
       <div className="pokemon-card-container">
         <div className="name-number-container">
           <h3 className="pokemon-name">{pokeName}</h3>
-          <h3 className="pokemon-number">{pokeId}</h3>
+          <h3 className="pokemon-number" data-testid="poke-id-test">{pokeId}</h3>
         </div>
 
         <div className="sprite-container">

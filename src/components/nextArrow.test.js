@@ -1,17 +1,37 @@
-// Test not working 
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+import NextArrow from "./next-arrow";
+import PokemonCard from "./pokemon-card";
+import mockPokemonDetails from "mock-data/mockPokemonDetails";
 
-// import { render, screen, container } from "@testing-library/react";
-// import "@testing-library/jest-dom/extend-expect";
-// import NextArrow from "./next-arrow";
-// import App from 'App';
+// This test really just tests that the Pokemon card renders Ditto's Id
+// ToDo mock requests in the next Pokemon function
+const mockNextPokemkonFn = jest.fn();
 
+const MockPokemonCard = () => {
+  return (
+    <PokemonCard
+      pokemonDetails={mockPokemonDetails}
+      pokeName={mockPokemonDetails.name}
+      pokeId={mockPokemonDetails.id}
+      pokeImg={mockPokemonDetails.sprites.front_default}
+    />
+  );
+};
 
-// describe('Render Next Pokemon in Pokemon Card' , () => {
-//     test('On click the next button displays the next pokemon', () => {
-//         render(<App  />)
+describe("Render Next Pokemon in Pokemon Card", () => {
+  test("Shoud display the next pokemon on click", async () => {
+    render(<MockPokemonCard pokemonDetails={mockPokemonDetails} />);
+    render(<NextArrow nextPokemon={mockNextPokemkonFn} />);
 
-//         const nextArrowElm = screen.getByTitle('.right-arrow')
-//         expect(nextArrowElm).toBeInTheDocument();
+    const nextArrowElm = screen.getByTestId("next-arrow-test");
+    expect(nextArrowElm).toBeInTheDocument();
 
-//     })
-// })
+    const pokeIdDiv = screen.getByTestId("poke-id-test");
+    expect(pokeIdDiv).toBeInTheDocument();
+
+    fireEvent.click(nextArrowElm);
+    let nextId = screen.getByText("132");
+    expect(nextId).toBeInTheDocument();
+  });
+});

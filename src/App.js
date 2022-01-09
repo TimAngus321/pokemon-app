@@ -98,13 +98,13 @@ function App() {
 
   //   Store all pokemon urls in an array
   const allPokeUrls = [];
-  if (!isLoading) {
+  if (!loadingUrls) {
     pokeUrls.map((pokeName) => allPokeUrls.push(pokeName.url));
   }
 
   // Get up to date last pokemon Id - when more pokemon are added this should stay relevant
   async function getLastPokeId() {
-    const lastPokemonUrl = allPokeUrls[allPokeUrls.length - 1];
+    const lastPokemonUrl = await allPokeUrls[allPokeUrls.length - 1];
     const getIdUrl = lastPokemonUrl.substr(lastPokemonUrl.length - 6);
     const lastPokemonIdString = getIdUrl.slice(0, -1);
     const lastPokemonId = parseInt(lastPokemonIdString);
@@ -113,7 +113,7 @@ function App() {
 
   // // Display previous pokemon on click
   async function previousPokemon() {
-    const getLastPokePromise = getLastPokeId();
+    const getLastPokePromise = await getLastPokeId();
     const lastPokeIdPromise = Promise.resolve(getLastPokePromise);
     lastPokeIdPromise.then(function (value) {
       const lastPokeId = value;
@@ -156,7 +156,7 @@ function App() {
 
   // // Display next pokemon on click
   async function nextPokemon() {
-    const getLastPokePromise = getLastPokeId();
+    const getLastPokePromise = await getLastPokeId();
     const lastPokeIdPromise = Promise.resolve(getLastPokePromise);
     lastPokeIdPromise.then(function (value) {
       const lastPokeId = value;
