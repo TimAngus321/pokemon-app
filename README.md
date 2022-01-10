@@ -23,7 +23,7 @@ The app has been deployed to gh pages and can be found here: [Pokemon Search App
 
 ## To Clone Repo and set up locally
 
-** Clone Repo **
+**Clone Repo**
 
 ```
 git clone https://github.com/TimAngus321/subvisual-coding-challenge-pokemon-search.git
