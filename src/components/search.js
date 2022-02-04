@@ -13,13 +13,11 @@ const Search = (props) => {
   //   Get all pokemon names
   useEffect(() => {
     (async function getAllPokeNames() {
-      setTimeout(async () => {
         setIsLoading(true);
         const pokeNames = await getPokemonNames();
         const allPokeNames = pokeNames;
         setPokemonNames(allPokeNames);
         setIsLoading(false);
-      }, 500);
     })();
   }, []);
 
