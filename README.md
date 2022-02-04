@@ -19,7 +19,7 @@
 **Deployment**
 yarn add gh-pages --save-dev
 
-The app has been deployed to gh pages and can be found here: [Pokemon Search App](https://timangus321.github.io/subvisual-coding-challenge-pokemon-search/).
+The app has been deployed to gh pages and can be found here: [Pokemon Search App](https://timangus321.github.io/pokemon-app/).
 
 ## To Clone Repo and set up locally
 
