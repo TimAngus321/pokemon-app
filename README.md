@@ -1,4 +1,4 @@
-# Subvisual Coding Challenge
+# Pokemon App Challenge
 
 **Pokemon Search is a react app that performs the following taks:**
 
