@@ -1,6 +1,6 @@
 /************ Layout & Basic Setup ***************/
 
-.html {
+html {
   display: inline-block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -141,6 +141,7 @@ img.pokemon-sprite {
   display: flex;
   justify-content: center;
   height: 20%;
+  color: red;
 }
 
 /************ Arrow Buttons ***************/

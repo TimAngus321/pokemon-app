@@ -1,7 +1,6 @@
 import "./App.scss";
 import { useState, useEffect, useCallback, Fragment } from "react";
 import { getBulbasaur } from "./services/get-bulbasaur";
-import Spinner from "./components/spinner";
 import PokemonCard from "components/pokemon-card";
 import Search from "./components/search";
 import axios from "axios";
@@ -13,7 +12,7 @@ import PreviousArrow from "./components/previous-arrow";
 import { getPokemonNames } from "services/get-pokemon-names";
 
 function App() {
-  const [pokemon, setPokemon] = useState({});
+  const [pokemon, setPokemon] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -23,22 +22,24 @@ function App() {
   const pokeUrl = `https://pokeapi.co/api/v2/pokemon/`;
 
   // Get Bulbasaur on load
-  useEffect(() => {
+  useEffect(()  => {
     (async function getInitialPokemon() {
-      setTimeout(async () => {
+    if (!pokemon) {
         try {
-          setIsLoading(true);
           const bulbasuar = await getBulbasaur();
           const bulbasaurData = bulbasuar;
           setPokemon(bulbasaurData);
-          setIsLoading(false);
         } catch (err) {
           console.log(err);
           setError(true);
         }
-      }, 500);
+      } 
+      setIsLoading(false)
     })();
-  }, []);
+  }, [pokemon]);
+
+  
+
 
   // Get queried pokemon here
   async function pokemonSearch(search) {
@@ -49,7 +50,6 @@ function App() {
       return;
     }
     setError(false);
-    setTimeout(async () => {
       setIsLoading(true);
       try {
         const searchedPokemon = await axios
@@ -65,7 +65,6 @@ function App() {
         console.log("Bad spelling");
         setErrorMsg(false);
       }
-    }, 1500);
   }
 
   // Display toast error if button clicked with no search query or unknown pokemon
@@ -81,18 +80,16 @@ function App() {
   // Prevent multiple renders of notificaton
   useEffect(() => {
     displayErrorNotification();
-  }, [errorMsg]);
+  }, [displayErrorNotification, errorMsg]);
 
   //   Get all pokemon urls (with Id)
   useEffect(() => {
     (async function getAllPokeIds() {
-      setTimeout(async () => {
         setLoadingUrls(true);
         const pokeUrls = await getPokemonNames();
         const allPokeUrls = pokeUrls;
         setPokeUrls(allPokeUrls);
         setLoadingUrls(false);
-      }, 500);
     })();
   }, []);
 
@@ -120,7 +117,7 @@ function App() {
       const firstPokemonId = 1;
 
       if (pokemon.id === firstPokemonId) {
-        setTimeout(async () => {
+        (async function() {
           try {
             setIsLoading(true);
             const getPreviousPoke = await axios
@@ -133,9 +130,9 @@ function App() {
             console.log(err);
             setError(true);
           }
-        }, 500);
+        })()
       } else {
-        setTimeout(async () => {
+        (async function() {
           try {
             setIsLoading(true);
             let previousPokemon = pokemon.id - 1;
@@ -149,7 +146,7 @@ function App() {
             console.log(err);
             setError(true);
           }
-        }, 500);
+        })();
       }
     });
   }
@@ -162,7 +159,7 @@ function App() {
       const lastPokeId = value;
 
       if (pokemon.id === lastPokeId) {
-        setTimeout(async () => {
+        (async function() {
           try {
             setIsLoading(true);
             const bulbasuar = await getBulbasaur();
@@ -173,9 +170,9 @@ function App() {
             console.log(err);
             setError(true);
           }
-        }, 500);
+        })();
       } else {
-        setTimeout(async () => {
+        (async function() {
           try {
             setIsLoading(true);
             let nextPokemon = pokemon.id + 1;
@@ -189,7 +186,7 @@ function App() {
             console.log(err);
             setError(true);
           }
-        }, 500);
+        })(); 
       }
     });
   }
@@ -215,16 +212,10 @@ function App() {
       <div className="right-components">
         {error ? (
           <h2>Pokemon not found. Please check your query and try again.</h2>
-        ) : isLoading ? (
-          <Spinner />
         ) : null}
         {!isLoading && pokemon && !error ? (
           <PokemonCard
-            loading={isLoading}
             pokemonDetails={pokemon}
-            pokeName={pokemon.name}
-            pokeId={pokemon.id}
-            pokeImg={pokemon.sprites.front_default}
           />
         ) : null}
       </div>
