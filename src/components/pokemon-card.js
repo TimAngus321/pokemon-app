@@ -17,7 +17,7 @@ const PokemonCard = ({ pokemonDetails }) => {
         </div>
 
         <div className="sprite-container">
-          <img src={pokemonDetails.sprites.other.dream_world.front_default || pokemonDetails.sprites.other['official-artwork'].front_default} alt="Pokémon Sprite" className="pokemon-sprite" />
+          <img src={pokemonDetails.sprites.other.dream_world.front_default || pokemonDetails.sprites.other['official-artwork'].front_default || pokemonDetails.sprites.front_default} alt="Pokémon Sprite" className="pokemon-sprite" />
         </div>
         <div className="type-container">
           {pokemonDetails.types.map((type, key) => (

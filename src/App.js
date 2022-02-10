@@ -1,6 +1,6 @@
 import "./App.scss";
 import { useState, useEffect, useCallback, Fragment } from "react";
-import { getBulbasaur } from "./services/get-bulbasaur";
+import { getPokemon } from "./services/get-pokemon";
 import PokemonCard from "components/pokemon-card";
 import Search from "./components/search";
 import axios from "axios";
@@ -20,13 +20,14 @@ function App() {
   const [loadingUrls, setLoadingUrls] = useState(false);
 
   const pokeUrl = `https://pokeapi.co/api/v2/pokemon/`;
+  const lastPokeId = 10220;
 
   // Get Bulbasaur on load
   useEffect(()  => {
     (async function getInitialPokemon() {
     if (!pokemon) {
         try {
-          const bulbasuar = await getBulbasaur();
+          const bulbasuar = await getPokemon('1');
           const bulbasaurData = bulbasuar;
           setPokemon(bulbasaurData);
         } catch (err) {
@@ -36,7 +37,7 @@ function App() {
       } 
       setIsLoading(false)
     })();
-  }, [pokemon]);
+  }, []);
 
   
 
@@ -46,14 +47,14 @@ function App() {
     if (!search) {
       setError(true);
       setErrorMsg("You must enter a Pokemon Name");
-      console.log("No query");
       return;
     }
     setError(false);
       setIsLoading(true);
       try {
+
         const searchedPokemon = await axios
-          .get(`${pokeUrl}${search}`)
+          .get(`${pokeUrl}${search.toLowerCase()}`)
           .catch((error) => console.log(error));
         const foundPokemon = searchedPokemon.data;
         setPokemon(foundPokemon);
@@ -68,21 +69,21 @@ function App() {
   }
 
   // Display toast error if button clicked with no search query or unknown pokemon
-  const displayErrorNotification = useCallback(() => {
-    if (error && errorMsg !== "") {
-      toast.error(errorMsg, {
-        position: toast.POSITION.BOTTOM_RIGHT,
-        hideProgressBar: true,
-      });
-    }
-  });
+  // const displayErrorNotification = useCallback(() => {
+  //   if (error && errorMsg !== "") {
+  //     toast.error(errorMsg, {
+  //       position: toast.POSITION.BOTTOM_RIGHT,
+  //       hideProgressBar: true,
+  //     });
+  //   }
+  // });
 
   // Prevent multiple renders of notificaton
-  useEffect(() => {
-    displayErrorNotification();
-  }, [displayErrorNotification, errorMsg]);
+  // useEffect(() => {
+  //   displayErrorNotification();
+  // }, [displayErrorNotification, errorMsg]);
 
-  //   Get all pokemon urls (with Id)
+  // //   Get all pokemon urls (with Id)
   useEffect(() => {
     (async function getAllPokeIds() {
         setLoadingUrls(true);
@@ -99,21 +100,8 @@ function App() {
     pokeUrls.map((pokeName) => allPokeUrls.push(pokeName.url));
   }
 
-  // Get up to date last pokemon Id - when more pokemon are added this should stay relevant
-  async function getLastPokeId() {
-    const lastPokemonUrl = await allPokeUrls[allPokeUrls.length - 1];
-    const getIdUrl = lastPokemonUrl.substr(lastPokemonUrl.length - 6);
-    const lastPokemonIdString = getIdUrl.slice(0, -1);
-    const lastPokemonId = parseInt(lastPokemonIdString);
-    return lastPokemonId;
-  }
-
   // // Display previous pokemon on click
   async function previousPokemon() {
-    const getLastPokePromise = await getLastPokeId();
-    const lastPokeIdPromise = Promise.resolve(getLastPokePromise);
-    lastPokeIdPromise.then(function (value) {
-      const lastPokeId = value;
       const firstPokemonId = 1;
 
       if (pokemon.id === firstPokemonId) {
@@ -148,21 +136,17 @@ function App() {
           }
         })();
       }
-    });
   }
 
   // // Display next pokemon on click
   async function nextPokemon() {
-    const getLastPokePromise = await getLastPokeId();
-    const lastPokeIdPromise = Promise.resolve(getLastPokePromise);
-    lastPokeIdPromise.then(function (value) {
-      const lastPokeId = value;
-
+    console.log(lastPokeId)
+    console.log(pokemon.id)
       if (pokemon.id === lastPokeId) {
         (async function() {
           try {
             setIsLoading(true);
-            const bulbasuar = await getBulbasaur();
+            const bulbasuar = await getPokemon('1');
             const bulbasaurData = bulbasuar;
             setPokemon(bulbasaurData);
             setIsLoading(false);
@@ -188,7 +172,6 @@ function App() {
           }
         })(); 
       }
-    });
   }
 
   return (
