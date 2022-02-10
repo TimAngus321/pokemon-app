@@ -92,6 +92,7 @@ html {
   display: flex;
   justify-content: space-between;
   height: 20%;
+  text-transform: capitalize;
 }
 
 .sprite-container {
@@ -113,6 +114,7 @@ img.pokemon-sprite {
   flex-direction: row;
   justify-content: space-between;
   align-self: flex-end;
+  text-transform: capitalize;
 }
 
 /************ Left Side Componets Layout ***************/
