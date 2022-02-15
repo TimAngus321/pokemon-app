@@ -9,7 +9,7 @@ import PreviousArrow from "./components/arrows/previous-arrow";
 
 function App() {
   const [pokemon, setPokemon] = useState();
-  const [initialPokemon, setInitialPokemon] = useState();
+  const [initialPokemon, setInitialPokemon] = useState(true);
   const [pokemonName, setPokemonName] = useState();
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -20,9 +20,10 @@ function App() {
 
   // Get Bulbasaur on load
   useEffect(() => {
-    if (!initialPokemon) {
+    if (initialPokemon ) {
       findPokemon("1");
-    }
+      setInitialPokemon(false)
+    } 
   }, [initialPokemon]);
 
   useEffect(() => {
@@ -95,11 +96,15 @@ function App() {
       </div>
 
       <div className="right-components">
-        {error ? <h2 style={{ color: 'white'}}>{errorMsg}</h2> : null}
+        {error ? 
+        <div className="">
+        <h2 style={{ color: 'white'}}>{errorMsg}</h2> 
+</div> : null}
         {pokemon && !error ? <PokemonCard pokemonDetails={pokemon} /> : null}
       </div>
     </div>
   );
 }
+
 
 export default App;
