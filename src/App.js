@@ -6,10 +6,11 @@ import Search from "./components/Search/search";
 import "react-toastify/dist/ReactToastify.css";
 import NextArrow from "./components/arrows/next-arrow";
 import PreviousArrow from "./components/arrows/previous-arrow";
+import pokeball from "./svgs/pokeball.svg"
 
 function App() {
   const [pokemon, setPokemon] = useState();
-  const [initialPokemon, setInitialPokemon] = useState();
+  const [initialPokemon, setInitialPokemon] = useState(true);
   const [pokemonName, setPokemonName] = useState();
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -20,9 +21,10 @@ function App() {
 
   // Get Bulbasaur on load
   useEffect(() => {
-    if (!initialPokemon) {
+    if (initialPokemon ) {
       findPokemon("1");
-    }
+      setInitialPokemon(false)
+    } 
   }, [initialPokemon]);
 
   useEffect(() => {
@@ -69,7 +71,7 @@ function App() {
   }
 
   // // Display next pokemon on click
-  async function nextPokemon() {
+  function nextPokemon() {
     if (pokemon.id === lastPokeId) {
       findPokemon("1");
     } else {
@@ -83,6 +85,7 @@ function App() {
       <div className="left-action-components">
         <div className="action-components-container">
           <div className="arrows-container">
+          
             {pokemon ? (
               <Fragment>
                 <PreviousArrow previousPokemon={previousPokemon} />
@@ -93,13 +96,16 @@ function App() {
           <Search pokemonSearch={pokemonSearch} />
         </div>
       </div>
-
       <div className="right-components">
-        {error ? <h2>{errorMsg}</h2> : null}
+        {error ? 
+        <div className="">
+        <h2 style={{ color: 'white'}}>{errorMsg}</h2> 
+</div> : null}
         {pokemon && !error ? <PokemonCard pokemonDetails={pokemon} /> : null}
       </div>
     </div>
   );
 }
+
 
 export default App;

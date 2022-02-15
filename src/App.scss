@@ -1,6 +1,8 @@
 /************ App Colors ***************/
 
 $poke-yellow: #FFD800;
+$secondary-black: #1E1E1E;
+$secondary-text-color: #757575;
 
 
 /************ Layout & Basic Setup ***************/
@@ -16,7 +18,7 @@ html {
 .app-container {
   display: flex;
   flex-direction: column-reverse;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -44,7 +46,7 @@ html {
 
 @media only screen and (max-width: 900px) {
   .left-action-components {
-    padding: 40px 0;
+    padding: 0 0 40px 0;
     height: 250px;
   }
 }
@@ -65,11 +67,12 @@ html {
   }
 }
 
+
 /************ Pokemon Card ***************/
 
 .pokemon-card {
-  width: 300px;
-  height: 400px;
+  width: 350px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,8 +84,8 @@ html {
 @media only screen and (max-width: 400px) {
   .pokemon-card {
     width: 220px;
-    height: 225px;
-    padding: 40px 0;
+    height: 300px;
+    padding: 5px 0;
   }
 }
 
@@ -112,8 +115,8 @@ html {
 }
 
 img.pokemon-sprite {
-  width: 150px;
-  height: 150px;
+  width: 90%;
+  height: 90%;
 }
 
 .type-container {
@@ -124,7 +127,7 @@ img.pokemon-sprite {
   align-self: flex-end;
   text-transform: capitalize;
   div {
-    padding: 0 10px;
+    padding: 0 5px;
   }
 }
 
@@ -147,7 +150,7 @@ img.pokemon-sprite {
 /************ Left Side Componets Layout ***************/
 
 .action-components-container {
-  height: 400px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -183,12 +186,12 @@ img.pokemon-sprite {
  
 .left-arrow-container {
   cursor: pointer;
-  color: $poke-yellow;
+  color: white;
 }
 
 .right-arrow-container {
   cursor: pointer;
-  color: $poke-yellow;
+  color: white;
 }
 
 .arrows-container {
@@ -217,10 +220,12 @@ img.pokemon-sprite {
   align-self: center;
   justify-content: center;
   height: 3.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  border: 1px solid #E7E7E7;
+  // box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid $poke-yellow;
   width: 100%;
   border-radius: 5px;
+  background-color: $secondary-black;
+  color: white;
 }
 
 .search-button {
@@ -229,12 +234,12 @@ img.pokemon-sprite {
   justify-content: center;
   position: absolute;
   right: 8px;
-  background: $poke-yellow;
-  color: white;
+  background: none;
+  color: $secondary-text-color;
   border: none;
   cursor: pointer;
   padding: 8px 24px;
-  border-radius: 4px;
+  border-left: 1px solid #FFD800;
 }
 
 /************ Autocomplete ***************/
@@ -246,21 +251,22 @@ input {
   border: none;
 }
 .no-autocomplete {
-  color: #999;
+  color: $secondary-text-color;
   padding: 8px;
 }
 .autocomplete {
   position: absolute;
-  border: 1px solid #999;
-  border-top-width: 0;
+  border: 1px solid $poke-yellow;
   list-style: none;
   margin-top: 0;
-  overflow-y: auto;
+  overflow-y: visible;
   padding-left: 0;
   width: 100%;
-  max-height: 200px;
-  overflow-y: auto;
+  max-height: fit-content;
   top: 145px;
+  text-transform: capitalize;
+  text-align: center;
+  border-radius: 5px;
 }
 
 @media only screen and (max-width: 900px) {
@@ -271,14 +277,16 @@ input {
 
 .autocomplete li {
   padding: 8px;
-  background: white;
+  background: black;
+  color: $secondary-text-color;
 }
 .autocomplete > .active,
 .autocomplete li:hover {
-  background-color: darkgray;
+  background-color: $secondary-black;
   cursor: pointer;
   font-weight: 700;
+  color: white;
 }
 .autocomplete li:not(:last-of-type) {
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid $poke-yellow;
 }
