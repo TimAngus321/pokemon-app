@@ -64,6 +64,7 @@ const Search = (props) => {
     }
   };
 
+
   // Injects Autocomplete into dom if user starts inputing text into input
   const renderAutocomplete = () => {
     if (isShow && search) {
@@ -76,7 +77,7 @@ const Search = (props) => {
                 className = "active";
               }
               return (
-                <li className={className} key={suggestion} onClick={onClick}>
+                <li className={className} key={suggestion} onClick={onClick} >
                   {suggestion}
                 </li>
               );

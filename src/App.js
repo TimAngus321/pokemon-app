@@ -6,6 +6,7 @@ import Search from "./components/Search/search";
 import "react-toastify/dist/ReactToastify.css";
 import NextArrow from "./components/arrows/next-arrow";
 import PreviousArrow from "./components/arrows/previous-arrow";
+import pokeball from "./svgs/pokeball.svg"
 
 function App() {
   const [pokemon, setPokemon] = useState();
@@ -84,6 +85,7 @@ function App() {
       <div className="left-action-components">
         <div className="action-components-container">
           <div className="arrows-container">
+          
             {pokemon ? (
               <Fragment>
                 <PreviousArrow previousPokemon={previousPokemon} />
@@ -94,7 +96,6 @@ function App() {
           <Search pokemonSearch={pokemonSearch} />
         </div>
       </div>
-
       <div className="right-components">
         {error ? 
         <div className="">
