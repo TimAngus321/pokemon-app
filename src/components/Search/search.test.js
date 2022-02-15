@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Search from "./search";
-import PokemonCard from "./pokemon-card";
+import PokemonCard from "../pokemonCard/pokemon-card";
 import mockPokemonDetails from "mock-data/mockPokemonDetails";
 
 

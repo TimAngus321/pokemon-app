@@ -1,3 +1,8 @@
+/************ App Colors ***************/
+
+$poke-yellow: #FFD800;
+
+
 /************ Layout & Basic Setup ***************/
 
 html {
@@ -5,10 +10,12 @@ html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
        box-sizing: border-box;
+  background: black;
 }
 
 .app-container {
   display: flex;
+  flex-direction: column-reverse;
   height: 100vh;
   width: 100%;
   padding: 0;
@@ -22,22 +29,21 @@ html {
     height: 100%;
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 40px 0;
   }
 }
 
 .left-action-components {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  padding: 40px;
+  width: 100%;
+  // padding: 40px 0;
   justify-content: center;
   align-items: center;
 }
 
 @media only screen and (max-width: 900px) {
   .left-action-components {
-    width: 100%;
     padding: 40px 0;
     height: 250px;
   }
@@ -46,8 +52,8 @@ html {
 .right-components {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  padding: 40px;
+  width: 100%;
+  padding: 40px 0;
   justify-content: center;
   align-items: center;
 }
@@ -68,7 +74,7 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 5px solid #FEEDBD;
+  border: 5px solid $poke-yellow;
   border-radius: 15px;
 }
 
@@ -90,9 +96,11 @@ html {
 
 .name-number-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   height: 20%;
   text-transform: capitalize;
+  align-items: center;
 }
 
 .sprite-container {
@@ -112,9 +120,28 @@ img.pokemon-sprite {
   height: 20%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-self: flex-end;
   text-transform: capitalize;
+  div {
+    padding: 0 10px;
+  }
+}
+
+.pokemon-name {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.pokemon-number {
+  display: flex;
+  justify-content: center;
+  background-color: $poke-yellow;
+  border-radius: 1rem;
+  min-width: fit-content;
+  padding: 7px;
 }
 
 /************ Left Side Componets Layout ***************/
@@ -156,10 +183,12 @@ img.pokemon-sprite {
  
 .left-arrow-container {
   cursor: pointer;
+  color: $poke-yellow;
 }
 
 .right-arrow-container {
   cursor: pointer;
+  color: $poke-yellow;
 }
 
 .arrows-container {
@@ -200,7 +229,7 @@ img.pokemon-sprite {
   justify-content: center;
   position: absolute;
   right: 8px;
-  background: red;
+  background: $poke-yellow;
   color: white;
   border: none;
   cursor: pointer;
@@ -242,6 +271,7 @@ input {
 
 .autocomplete li {
   padding: 8px;
+  background: white;
 }
 .autocomplete > .active,
 .autocomplete li:hover {
