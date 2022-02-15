@@ -16,7 +16,7 @@ html {
 .app-container {
   display: flex;
   flex-direction: column-reverse;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -68,8 +68,8 @@ html {
 /************ Pokemon Card ***************/
 
 .pokemon-card {
-  width: 300px;
-  height: 400px;
+  width: 350px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,8 +81,8 @@ html {
 @media only screen and (max-width: 400px) {
   .pokemon-card {
     width: 220px;
-    height: 225px;
-    padding: 40px 0;
+    height: 300px;
+    padding: 5px 0;
   }
 }
 
@@ -112,8 +112,8 @@ html {
 }
 
 img.pokemon-sprite {
-  width: 150px;
-  height: 150px;
+  width: 90%;
+  height: 90%;
 }
 
 .type-container {
@@ -124,7 +124,7 @@ img.pokemon-sprite {
   align-self: flex-end;
   text-transform: capitalize;
   div {
-    padding: 0 10px;
+    padding: 0 5px;
   }
 }
 
@@ -183,12 +183,12 @@ img.pokemon-sprite {
  
 .left-arrow-container {
   cursor: pointer;
-  color: $poke-yellow;
+  color: white;
 }
 
 .right-arrow-container {
   cursor: pointer;
-  color: $poke-yellow;
+  color: white;
 }
 
 .arrows-container {

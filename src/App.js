@@ -69,7 +69,7 @@ function App() {
   }
 
   // // Display next pokemon on click
-  async function nextPokemon() {
+  function nextPokemon() {
     if (pokemon.id === lastPokeId) {
       findPokemon("1");
     } else {
@@ -95,7 +95,7 @@ function App() {
       </div>
 
       <div className="right-components">
-        {error ? <h2>{errorMsg}</h2> : null}
+        {error ? <h2 style={{ color: 'white'}}>{errorMsg}</h2> : null}
         {pokemon && !error ? <PokemonCard pokemonDetails={pokemon} /> : null}
       </div>
     </div>
