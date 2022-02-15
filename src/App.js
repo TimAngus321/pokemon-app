@@ -1,185 +1,87 @@
 import "./App.scss";
-import { useState, useEffect, useCallback, Fragment } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { getPokemon } from "./services/get-pokemon";
-import PokemonCard from "components/pokemon-card";
-import Search from "./components/search";
-import axios from "axios";
+import PokemonCard from "components/pokemonCard/pokemon-card";
+import Search from "./components/Search/search";
 import "react-toastify/dist/ReactToastify.css";
-import { toast } from "react-toastify";
-import { ToastContainer } from "react-toastify";
-import NextArrow from "./components/next-arrow";
-import PreviousArrow from "./components/previous-arrow";
-import { getPokemonNames } from "services/get-pokemon-names";
+import NextArrow from "./components/arrows/next-arrow";
+import PreviousArrow from "./components/arrows/previous-arrow";
 
 function App() {
   const [pokemon, setPokemon] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+  const [initialPokemon, setInitialPokemon] = useState();
+  const [pokemonName, setPokemonName] = useState();
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [pokeUrls, setPokeUrls] = useState([]);
-  const [loadingUrls, setLoadingUrls] = useState(false);
 
-  const pokeUrl = `https://pokeapi.co/api/v2/pokemon/`;
   const lastPokeId = 10220;
+  const firstPokemonId = 1;
+
 
   // Get Bulbasaur on load
-  useEffect(()  => {
-    (async function getInitialPokemon() {
-    if (!pokemon) {
-        try {
-          const bulbasuar = await getPokemon('1');
-          const bulbasaurData = bulbasuar;
-          setPokemon(bulbasaurData);
-        } catch (err) {
-          console.log(err);
-          setError(true);
-        }
-      } 
-      setIsLoading(false)
-    })();
-  }, []);
+  useEffect(() => {
+    if (!initialPokemon) {
+      findPokemon("1");
+    }
+  }, [initialPokemon]);
 
-  
-
-
-  // Get queried pokemon here
-  async function pokemonSearch(search) {
-    if (!search) {
-      setError(true);
-      setErrorMsg("You must enter a Pokemon Name");
+  useEffect(() => {
+    if (!pokemonName) {
       return;
     }
-    setError(false);
-      setIsLoading(true);
-      try {
+    findPokemon(pokemonName);
+  }, [pokemonName]);
 
-        const searchedPokemon = await axios
-          .get(`${pokeUrl}${search.toLowerCase()}`)
-          .catch((error) => console.log(error));
-        const foundPokemon = searchedPokemon.data;
-        setPokemon(foundPokemon);
-        setIsLoading(false);
-      } catch (err) {
-        console.log(err);
-        setError(true);
-        setErrorMsg("Pokemon not found. Please check your spelling.");
-        console.log("Bad spelling");
-        setErrorMsg(false);
-      }
-  }
+   // All requests dealt with here
+   const findPokemon = (query) => {
+    getPokemon(query)
+      .then((pokemonData) => {
+        if (!pokemonData.status) {
+          setError(false);
+          setPokemon(pokemonData);
+          console.log(pokemon);
+          return;
+        } else if (pokemonData.status === 404) {
+          setError(true)
+          setErrorMsg("Pokemon not found")
+          return Promise.reject(pokemonData.status);
+        } else {
+          setError(true)
+          setErrorMsg("Unknown problem. Try again later.")
+          return Promise.reject(pokemonData.status);
+        }
+      });
+};
 
-  // Display toast error if button clicked with no search query or unknown pokemon
-  // const displayErrorNotification = useCallback(() => {
-  //   if (error && errorMsg !== "") {
-  //     toast.error(errorMsg, {
-  //       position: toast.POSITION.BOTTOM_RIGHT,
-  //       hideProgressBar: true,
-  //     });
-  //   }
-  // });
-
-  // Prevent multiple renders of notificaton
-  // useEffect(() => {
-  //   displayErrorNotification();
-  // }, [displayErrorNotification, errorMsg]);
-
-  // //   Get all pokemon urls (with Id)
-  useEffect(() => {
-    (async function getAllPokeIds() {
-        setLoadingUrls(true);
-        const pokeUrls = await getPokemonNames();
-        const allPokeUrls = pokeUrls;
-        setPokeUrls(allPokeUrls);
-        setLoadingUrls(false);
-    })();
-  }, []);
-
-  //   Store all pokemon urls in an array
-  const allPokeUrls = [];
-  if (!loadingUrls) {
-    pokeUrls.map((pokeName) => allPokeUrls.push(pokeName.url));
-  }
+  // Get queried pokemon here
+  const pokemonSearch = (search) => {
+    setPokemonName(search.toLowerCase());
+  };
 
   // // Display previous pokemon on click
-  async function previousPokemon() {
-      const firstPokemonId = 1;
-
-      if (pokemon.id === firstPokemonId) {
-        (async function() {
-          try {
-            setIsLoading(true);
-            const getPreviousPoke = await axios
-              .get(`${pokeUrl}${lastPokeId}`)
-              .catch((error) => console.log(error));
-            let previousPoke = getPreviousPoke.data;
-            setPokemon(previousPoke);
-            setIsLoading(false);
-          } catch (err) {
-            console.log(err);
-            setError(true);
-          }
-        })()
-      } else {
-        (async function() {
-          try {
-            setIsLoading(true);
-            let previousPokemon = pokemon.id - 1;
-            const getPrevPoke = await axios
-              .get(`${pokeUrl}${previousPokemon}`)
-              .catch((error) => console.log(error));
-            let prevPoke = getPrevPoke.data;
-            setPokemon(prevPoke);
-            setIsLoading(false);
-          } catch (err) {
-            console.log(err);
-            setError(true);
-          }
-        })();
-      }
+  function previousPokemon() {
+    if (pokemon.id === firstPokemonId) {
+      findPokemon(lastPokeId);
+    } else {
+      let previousPokemon = pokemon.id - 1;
+      findPokemon(previousPokemon);
+    }
   }
 
   // // Display next pokemon on click
   async function nextPokemon() {
-    console.log(lastPokeId)
-    console.log(pokemon.id)
-      if (pokemon.id === lastPokeId) {
-        (async function() {
-          try {
-            setIsLoading(true);
-            const bulbasuar = await getPokemon('1');
-            const bulbasaurData = bulbasuar;
-            setPokemon(bulbasaurData);
-            setIsLoading(false);
-          } catch (err) {
-            console.log(err);
-            setError(true);
-          }
-        })();
-      } else {
-        (async function() {
-          try {
-            setIsLoading(true);
-            let nextPokemon = pokemon.id + 1;
-            const getNextPoke = await axios
-              .get(`${pokeUrl}${nextPokemon}`)
-              .catch((error) => console.log(error));
-            let nextPoke = getNextPoke.data;
-            setPokemon(nextPoke);
-            setIsLoading(false);
-          } catch (err) {
-            console.log(err);
-            setError(true);
-          }
-        })(); 
-      }
+    if (pokemon.id === lastPokeId) {
+      findPokemon("1");
+    } else {
+      let nextPokemon = pokemon.id + 1;
+      findPokemon(nextPokemon);
+    }
   }
 
   return (
     <div className="app-container">
-      <ToastContainer />
       <div className="left-action-components">
         <div className="action-components-container">
-          <h2 className="app-header">Search That Pokémon!</h2>
           <div className="arrows-container">
             {pokemon ? (
               <Fragment>
@@ -193,14 +95,8 @@ function App() {
       </div>
 
       <div className="right-components">
-        {error ? (
-          <h2>Pokemon not found. Please check your query and try again.</h2>
-        ) : null}
-        {!isLoading && pokemon && !error ? (
-          <PokemonCard
-            pokemonDetails={pokemon}
-          />
-        ) : null}
+        {error ? <h2>{errorMsg}</h2> : null}
+        {pokemon && !error ? <PokemonCard pokemonDetails={pokemon} /> : null}
       </div>
     </div>
   );

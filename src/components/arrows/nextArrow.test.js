@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import NextArrow from "./next-arrow";
-import PokemonCard from "./pokemon-card";
+import PokemonCard from "../pokemonCard/pokemon-card";
 import mockPokemonDetails from "mock-data/mockPokemonDetails";
 
 // This test really just tests that the Pokemon card renders Ditto's Id

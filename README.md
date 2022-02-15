@@ -17,7 +17,6 @@
 ## Deployment
 
 **Deployment**
-yarn add gh-pages --save-dev
 
 The app has been deployed to gh pages and can be found here: [Pokemon Search App](https://timangus321.github.io/pokemon-app/).
 
@@ -34,8 +33,6 @@ git clone https://github.com/TimAngus321/subvisual-coding-challenge-pokemon-sear
 **Packages to install:**
 ```
 yarn add sass
-yarn add axios
-yarn add react-toastify
 ```
 
 **Icons:**
