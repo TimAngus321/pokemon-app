@@ -11,12 +11,13 @@
     align-items: center;
     border: 5px solid $poke-yellow;
     border-radius: 15px;
+    margin-bottom: 10px;
   }
   
   @media only screen and (max-width: 400px) {
     .pokemon-card {
-      width: 220px;
-      height: 300px;
+      width: calc(100% - 40px);
+      height: 85%;
       padding: 5px 0;
     }
   }
@@ -48,7 +49,7 @@
   
   img.pokemon-sprite {
     width: 90%;
-    height: 90%;
+    height: 100%;
   }
   
   .type-container {
@@ -56,7 +57,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-self: flex-end;
+    align-items: center;
     text-transform: capitalize;
     div {
       padding: 0 5px;
@@ -66,7 +67,7 @@
   .pokemon-name {
     display: flex;
     justify-content: center;
-    margin: 0;
+    margin: 15px 0;
     padding: 0;
   }
   
@@ -77,4 +78,5 @@
     border-radius: 1rem;
     min-width: fit-content;
     padding: 7px;
+    margin: 5px;
   }
