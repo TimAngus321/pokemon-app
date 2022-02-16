@@ -26,14 +26,13 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  // padding: 40px 0;
   justify-content: center;
   align-items: center;
 }
 
 @media only screen and (max-width: 900px) {
   .left-action-components {
-    padding: 0 0 40px 0;
+    margin: 0 0 40px 0;
     height: 250px;
   }
 }
@@ -69,7 +68,7 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    width: 70%;
+    width: 100%;
     padding: 40px 0;
     height: 350px;
 
@@ -113,6 +112,7 @@ input {
   padding: 8px;
   background: black;
   color: $secondary-text-color;
+  cursor: pointer;
 }
 .autocomplete > .active,
 .autocomplete li:hover {
