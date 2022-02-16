@@ -1,0 +1,25 @@
+/************ Arrow Buttons ***************/
+
+@import 'styles/_index.scss';
+
+.arrows-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+   
+  .left-arrow-container {
+    cursor: pointer;
+    color: white;
+  }
+  
+  .right-arrow-container {
+    cursor: pointer;
+    color: white;
+  }
+  
+  .arrows-container {
+    display: flex;
+    height: 20%;
+    justify-content: center;
+  }

@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const bulbasaurURL = "https://pokeapi.co/api/v2/pokemon/";
 
 export function getPokemon(query) {
