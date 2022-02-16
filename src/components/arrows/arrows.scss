@@ -7,6 +7,12 @@
     flex-direction: row;
     justify-content: space-between;
   }
+
+  @media only screen and (max-width: 450px) {
+    .arrows-container {
+      margin-top: 20px;
+    }
+  }
    
   .left-arrow-container {
     cursor: pointer;
