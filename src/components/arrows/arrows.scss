@@ -17,15 +17,17 @@
   .left-arrow-container {
     cursor: pointer;
     color: white;
+    z-index: 2;
   }
   
   .right-arrow-container {
     cursor: pointer;
     color: white;
+    z-index: 2;
   }
   
   .arrows-container {
     display: flex;
-    height: 20%;
+    height: fit-content;
     justify-content: center;
   }
