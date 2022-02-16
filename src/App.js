@@ -6,11 +6,11 @@ import Search from "./components/Search/search";
 import "react-toastify/dist/ReactToastify.css";
 import NextArrow from "./components/arrows/next-arrow";
 import PreviousArrow from "./components/arrows/previous-arrow";
-import pokeball from "./svgs/pokeball.svg"
+
 
 function App() {
   const [pokemon, setPokemon] = useState();
-  const [initialPokemon, setInitialPokemon] = useState(true);
+  const [initialPokemon, setInitialPokemon] = useState(false);
   const [pokemonName, setPokemonName] = useState();
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -21,9 +21,9 @@ function App() {
 
   // Get Bulbasaur on load
   useEffect(() => {
-    if (initialPokemon ) {
+    if (!initialPokemon) {
       findPokemon("1");
-      setInitialPokemon(false)
+      setInitialPokemon(true)
     } 
   }, [initialPokemon]);
 

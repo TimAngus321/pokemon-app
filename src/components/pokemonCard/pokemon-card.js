@@ -1,5 +1,6 @@
 import React from "react";
 import typeColours from "helpers/type-colours.js";
+import './pokemon-card.scss';
 
 const PokemonCard = ({ pokemonDetails }) => {
   return (

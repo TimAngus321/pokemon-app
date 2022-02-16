@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getPokemonNames } from "services/get-pokemon-names";
-import "react-toastify/dist/ReactToastify.css";
+import './search.scss';
 
 const Search = (props) => {
   const [search, setSearch] = useState("");

@@ -1,0 +1,42 @@
+/************ Search Component ***************/
+
+@import 'styles/_index.scss';
+
+.search-bar-container {
+    display: flex;
+    height: 60%;
+    width: 100%;
+    padding: 40px 0;
+  }
+  
+  .search-control {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+  }
+  
+  .search-input {
+    align-self: center;
+    justify-content: center;
+    height: 3.5rem;
+    border: 1px solid $poke-yellow;
+    width: 100%;
+    border-radius: 5px;
+    background-color: $secondary-black;
+    color: white;
+  }
+  
+  .search-button {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    position: absolute;
+    right: 8px;
+    background: none;
+    color: $secondary-text-color;
+    border: none;
+    cursor: pointer;
+    padding: 8px 24px;
+    border-left: 1px solid #FFD800;
+  }
