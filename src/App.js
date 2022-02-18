@@ -15,7 +15,7 @@ function App() {
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const lastPokeId = 10220;
+  const lastPokeId = 898;
   const firstPokemonId = 1;
 
 
