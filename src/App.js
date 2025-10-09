@@ -15,7 +15,7 @@ function App() {
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const lastPokeId = 898;
+  const lastPokeId = 1025;
   const firstPokemonId = 1;
 
 
@@ -80,8 +80,24 @@ function App() {
     }
   }
 
+  // Handle arrow key presses to display next and previous pokemon
+  const handleKeyDown = (event) => {
+  if (!pokemon) return;
+  
+  if (event.key === 'ArrowRight') {
+    event.preventDefault();
+    nextPokemon();
+  } else if (event.key === 'ArrowLeft') {
+    event.preventDefault();
+    previousPokemon();
+  }
+};
+
   return (
-    <div className="app-container">
+    <div 
+    className="app-container"
+    tabIndex={0} 
+    onKeyDown={handleKeyDown}>
       <div className="left-action-components">
         <div className="action-components-container">
           <div className="arrows-container">

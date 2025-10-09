@@ -30,4 +30,13 @@
     display: flex;
     height: fit-content;
     justify-content: center;
+    gap: 40px;
+    margin: 10px 0;
+  }
+
+  @media only screen and (max-width: 450px) {
+    .arrows-container {
+      gap: 30px;
+      margin: 5px 0;
+    }
   }
