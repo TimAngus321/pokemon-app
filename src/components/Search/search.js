@@ -105,7 +105,7 @@ const Search = (props) => {
         className="search-input"
         name="search"
         placeholder="Search Pokemon"
-        autocomplete="off"
+        autoComplete="off"
         value={search}
         onChange={onChange}
         onKeyDown={onKeyDown}
