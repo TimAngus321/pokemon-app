@@ -10,7 +10,7 @@
 
 - Provide a text-based search feature, where inputting a name or partial name should look for a matching pokemon and show it
 
-- Have at least two automated tests, for the two features above. 
+- Add automated tests for the features above. 
 
 ## Deployment
 
