@@ -1,4 +1,4 @@
-# Pokemon App Challenge
+# Pokemon App
 
 **Pokemon Search is a react app that performs the following taks:**
 
@@ -6,13 +6,11 @@
 
 - Submit a query to Pokeapi and display the given pokémon's name, number, sprite or error message if no match is found
 
-- Provide “Previous” & “Next” buttons, that switch to the previous/next pokemons, base on their id number
+- Provide “Previous” & “Next” buttons, that switch to the previous/next pokemons, based on their id number
 
 - Provide a text-based search feature, where inputting a name or partial name should look for a matching pokemon and show it
 
-**Unable to complete in time:**
-
-- Have at least two automated tests, for the two features above. 
+- Add automated tests for the features above. 
 
 ## Deployment
 
@@ -25,7 +23,7 @@ The app has been deployed to gh pages and can be found here: [Pokemon Search App
 **Clone Repo**
 
 ```
-git clone https://github.com/TimAngus321/subvisual-coding-challenge-pokemon-search.git
+git clone https://github.com/TimAngus321/pokemon-app.git
 ```
 
 ### Please install the following packages to ensure everything works correctly

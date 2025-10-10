@@ -52,9 +52,17 @@ const Search = (props) => {
   const onKeyDown = (e) => {
     if (e.keyCode === 13) {
       // enter key
-      setActive(0);
-      setIsShow(false);
-      setSearch(filtered[active]);
+      if (isShow && filtered.length > 0) {
+        // If dropdown is showing, select the active item
+        setActive(0);
+        setIsShow(false);
+        const selectedPokemon = filtered[active];
+        setSearch(selectedPokemon);
+        props.pokemonSearch(selectedPokemon);
+      } else {
+        // If no dropdown or no filtered results, search with current input
+        props.pokemonSearch(search);
+      }
     } else if (e.keyCode === 38) {
       // up arrow
       return active === 0 ? null : setActive(active - 1);
@@ -97,7 +105,7 @@ const Search = (props) => {
         className="search-input"
         name="search"
         placeholder="Search Pokemon"
-        autocomplete="off"
+        autoComplete="off"
         value={search}
         onChange={onChange}
         onKeyDown={onKeyDown}
