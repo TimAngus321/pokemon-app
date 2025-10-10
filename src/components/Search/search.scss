@@ -1,67 +1,71 @@
 /************ Search Component ***************/
 
-@import 'styles/_index.scss';
+@import "styles/_index.scss";
 
 .search-bar-container {
-    display: flex;
-    height: 60%;
-    width: 100%;
-    margin: 15px 0;
-    justify-content: center;
-  }
+  display: flex;
+  height: 60%;
+  width: 100%;
+  margin: 15px 0;
+  justify-content: center;
+}
 
-  @media only screen and (max-width: 450px) {
-    .search-bar-container {
-      margin: 10px 0;
-    }
+@media only screen and (max-width: 450px) {
+  .search-bar-container {
+    margin: 10px 0;
   }
-  
+}
+
+.search-control {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+}
+
+.search-input {
+  align-self: center;
+  height: 3.5rem;
+  border: 1px solid $poke-yellow;
+  width: 100%;
+  border-radius: 5px;
+  background-color: $secondary-black;
+  color: white;
+  padding-left: 16px;
+  padding-right: 80px;
+  font-size: 16px;
+  box-sizing: border-box;
+
+  .search-input:focus {
+    transform: scale(1);
+  }
+}
+
+.search-button {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  position: absolute;
+  right: 8px;
+  background: none;
+  color: $secondary-text-color;
+  border: none;
+  cursor: pointer;
+  padding: 8px 24px;
+  border-left: 1px solid #ffd800;
+  height: 3.5rem;
+  align-items: center;
+  font-size: 16px;
+  z-index: 1;
+}
+
+@media only screen and (max-width: 450px) {
   .search-control {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    width: 90%;
-    max-width: 500px;
-  }
-  
-  .search-input {
-    align-self: center;
-    justify-content: center;
-    height: 3.5rem;
-    border: 1px solid $poke-yellow;
-    width: 100%;
-    border-radius: 5px;
-    background-color: $secondary-black;
-    color: white;
-    padding-left: 16px;
-    padding-right: 80px;
-    font-size: 16px;
-    box-sizing: border-box;
-  }
-  
-  .search-button {
-    display: flex;
-    align-self: center;
-    justify-content: center;
-    position: absolute;
-    right: 8px;
-    background: none;
-    color: $secondary-text-color;
-    border: none;
-    cursor: pointer;
-    padding: 8px 24px;
-    border-left: 1px solid #FFD800;
-    height: 3.5rem;
-    align-items: center;
-    z-index: 1;
+    width: 95%;
   }
 
-  @media only screen and (max-width: 450px) {
-    .search-control {
-      width: 95%;
-    }
-    
-    .search-input {
-      font-size: 16px; // Prevents zoom on iOS
-    }
+  .search-input {
+    font-size: 16px; // Prevents zoom on iOS
   }
+}
