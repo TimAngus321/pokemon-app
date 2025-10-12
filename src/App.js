@@ -6,6 +6,7 @@ import Search from "./components/Search/search";
 import "react-toastify/dist/ReactToastify.css";
 import NextArrow from "./components/arrows/next-arrow";
 import PreviousArrow from "./components/arrows/previous-arrow";
+import WhosThatPokemon from "components/whosThatPokemon/whoPokemon";
 
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
         if (!pokemonData.status) {
           setError(false);
           setPokemon(pokemonData);
-          console.log(pokemon);
+          // console.log(pokemon);
           return;
         } else if (pokemonData.status === 404) {
           setError(true)
@@ -105,6 +106,7 @@ function App() {
             {pokemon ? (
               <Fragment>
                 <PreviousArrow previousPokemon={previousPokemon} />
+                <WhosThatPokemon />
                 <NextArrow nextPokemon={nextPokemon} />
               </Fragment>
             ) : null}
