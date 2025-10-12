@@ -11,7 +11,6 @@ const PreviousArrow = (props) => {
     >
       <FontAwesomeIcon
         className="left-arrow"
-        style={{ width: "200px", height: "50px" }}
         icon={faArrowLeft}
       />
     </div>

@@ -29,15 +29,16 @@ const Search = (props) => {
 
   // When a letter is added to input search through allPokemon names and see if there are matches
   const onChange = (e) => {
+    const inputValue = e.currentTarget.value;
     if (allPokmonNames !== "[]") {
       const newFilteredSuggestions = allPokmonNames.filter(
         (suggestion) =>
-          suggestion.toLowerCase().indexOf(search.toLowerCase()) > -1
+          suggestion.toLowerCase().startsWith(inputValue.toLowerCase())
       );
       setActive(0);
       setFiltered(newFilteredSuggestions);
       setIsShow(true);
-      setSearch(e.currentTarget.value);
+      setSearch(inputValue);
     }
   };
 
