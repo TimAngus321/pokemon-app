@@ -1,15 +1,34 @@
 {
   "files": {
-    "main.css": "/pokemon-app/static/css/main.61a1756c.css",
-    "main.js": "/pokemon-app/static/js/main.72e464e0.js",
+    "main.css": "/pokemon-app/static/css/main.731f17f8.css",
+    "main.js": "/pokemon-app/static/js/main.2012bd68.js",
     "static/js/453.9370457b.chunk.js": "/pokemon-app/static/js/453.9370457b.chunk.js",
+    "static/media/dragon.svg": "/pokemon-app/static/media/dragon.9ee1dc21a0c16cf0dfe3937a8da3cad8.svg",
+    "static/media/fire.svg": "/pokemon-app/static/media/fire.67b3478a6a8225166ece232e53eb3c50.svg",
+    "static/media/psychic.svg": "/pokemon-app/static/media/psychic.3fd0d3ca21ee7cef9d2dd85b0a9bfc5e.svg",
+    "static/media/fairy.svg": "/pokemon-app/static/media/fairy.0e07701bbc44fb287b0fc84bca39e0ca.svg",
+    "static/media/bug.svg": "/pokemon-app/static/media/bug.78c672dff2b9ea1eb2bafa593e7918f7.svg",
+    "static/media/rock.svg": "/pokemon-app/static/media/rock.2bc2fede8d46ce9601f1c6ffc6e5d352.svg",
+    "static/media/ghost.svg": "/pokemon-app/static/media/ghost.51f6b896c2b10942cdea823582db5bee.svg",
+    "static/media/flying.svg": "/pokemon-app/static/media/flying.28f70640a45ac50b66582fc49d6ccec4.svg",
+    "static/media/fighting.svg": "/pokemon-app/static/media/fighting.82a3a89765eea3f9200277808db3109f.svg",
+    "static/media/pokeball.svg": "/pokemon-app/static/media/pokeball.f35021d7875defc8ba083766cee800f3.svg",
+    "static/media/ice.svg": "/pokemon-app/static/media/ice.478d9fb11b4add35229f48e84d989437.svg",
+    "static/media/poison.svg": "/pokemon-app/static/media/poison.4023117dd0c7a607c3b26be59929d3aa.svg",
+    "static/media/steel.svg": "/pokemon-app/static/media/steel.a2d9ac68338a2e3c6eaf57190bb1a279.svg",
     "index.html": "/pokemon-app/index.html",
-    "main.61a1756c.css.map": "/pokemon-app/static/css/main.61a1756c.css.map",
-    "main.72e464e0.js.map": "/pokemon-app/static/js/main.72e464e0.js.map",
+    "static/media/ground.svg": "/pokemon-app/static/media/ground.122cf0bb34bbb7af8cb13da2723f6ca5.svg",
+    "static/media/dark.svg": "/pokemon-app/static/media/dark.5384f2979b17074b5b297f516ba33bac.svg",
+    "static/media/water.svg": "/pokemon-app/static/media/water.116149e4295268c9fcd8f17a17afade5.svg",
+    "static/media/electric.svg": "/pokemon-app/static/media/electric.d3750b82cba27e9d4a8db042d0fcc31f.svg",
+    "static/media/grass.svg": "/pokemon-app/static/media/grass.e4b91dad74ab64e30056672f0bf41789.svg",
+    "static/media/normal.svg": "/pokemon-app/static/media/normal.82ba4e91ac62a085989ef37b3ebb34a7.svg",
+    "main.731f17f8.css.map": "/pokemon-app/static/css/main.731f17f8.css.map",
+    "main.2012bd68.js.map": "/pokemon-app/static/js/main.2012bd68.js.map",
     "453.9370457b.chunk.js.map": "/pokemon-app/static/js/453.9370457b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.61a1756c.css",
-    "static/js/main.72e464e0.js"
+    "static/css/main.731f17f8.css",
+    "static/js/main.2012bd68.js"
   ]
 }
