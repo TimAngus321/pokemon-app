@@ -15,12 +15,14 @@ const PokemonCard = ({ pokemonDetails, whosThatPokemonMode }) => {
     >
       <div className="pokemon-card-container">
         <div className="name-number-container">
-          <h2 className="pokemon-name">{pokemonDetails.name}</h2>
+          <h2
+            className="pokemon-name"
+            style={{ visibility: whosThatPokemonMode ? "hidden" : "visible" }}
+          >
+            {pokemonDetails.name}
+          </h2>
           <div className="hp-types-container">
-            <h3
-              className="pokemon-number"
-              data-testid="poke-id-test"
-            >
+            <h3 className="pokemon-number" data-testid="poke-id-test">
               {pokemonDetails.stats[0].base_stat} HP
             </h3>
             <div className="type-container">
@@ -50,14 +52,20 @@ const PokemonCard = ({ pokemonDetails, whosThatPokemonMode }) => {
             }
             alt={pokemonDetails.name}
             className="pokemon-sprite"
-            style={{ filter: whosThatPokemonMode ? "brightness(0) invert(1)" : "none" }}
+            style={{
+              filter: whosThatPokemonMode ? "brightness(0) invert(1)" : "none",
+            }}
           />
-           <p className="pokemon-name">
-          Height: {pokemonDetails.height * 10}cm, Weight: {pokemonDetails.weight} lbs
-        </p>
+          <p className="pokemon-name">
+            Height: {pokemonDetails.height * 10}cm, Weight:{" "}
+            {pokemonDetails.weight} lbs
+          </p>
         </div>
         <div className="stats-container">
-        <div><h3>ID: </h3><p>{pokemonDetails.id}</p></div>
+          <div>
+            <h3>ID: </h3>
+            <p>{pokemonDetails.id}</p>
+          </div>
           {pokemonDetails.stats.slice(1).map((stat, key) => (
             <div key={key}>
               <h3>

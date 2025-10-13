@@ -35,8 +35,8 @@ function App() {
   }, [pokemonName]);
 
   // All requests dealt with here
-  const findPokemon = (query) => {
-    getPokemon(query).then((pokemonData) => {
+  const findPokemon = async (query) => {
+    const pokemonData = await getPokemon(query)
       if (!pokemonData.status) {
         setError(false);
         setPokemon(pokemonData);
@@ -51,7 +51,6 @@ function App() {
         setErrorMsg("Unknown problem. Try again later.");
         return Promise.reject(pokemonData.status);
       }
-    });
   };
 
   // Get random pokemon on click
@@ -75,6 +74,7 @@ function App() {
     } else {
       let previousPokemon = pokemon.id - 1;
       findPokemon(previousPokemon);
+      setWhosThatPokemonMode(false);
     }
   }
 
@@ -85,6 +85,7 @@ function App() {
     } else {
       let nextPokemon = pokemon.id + 1;
       findPokemon(nextPokemon);
+      setWhosThatPokemonMode(false);
     }
   }
 
