@@ -3,8 +3,9 @@ import typeColours from "helpers/type-colours.js";
 import typeIcons from "helpers/type-icons.js";
 import "./pokemon-card.scss";
 
-const PokemonCard = ({ pokemonDetails }) => {
+const PokemonCard = ({ pokemonDetails, whosThatPokemonMode }) => {
   // console.log("pokemonDetails: ", pokemonDetails);
+  console.log("whosThatPokemonMode: ", whosThatPokemonMode);
   return (
     <div
       className="pokemon-card"
@@ -49,6 +50,7 @@ const PokemonCard = ({ pokemonDetails }) => {
             }
             alt={pokemonDetails.name}
             className="pokemon-sprite"
+            style={{ filter: whosThatPokemonMode ? "brightness(0) invert(1)" : "none" }}
           />
            <p className="pokemon-name">
           Height: {pokemonDetails.height * 10}cm, Weight: {pokemonDetails.weight} lbs

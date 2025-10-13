@@ -7,28 +7,8 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
 }
-
-// .arrows-container {
-//   display: flex;
-//   height: fit-content;
-//   justify-content: center;
-//   gap: 40px;
-//   margin: 10px 0;
-// }
-
-// @media only screen and (max-width: 450px) {
-//   .arrows-container {
-//     gap: 30px;
-//     margin: 5px 0;
-//   }
-// }
-
-// @media only screen and (max-width: 450px) {
-//   .arrows-container {
-//     margin-top: 0px;
-//   }
-// }
 
 .left-arrow-container {
   cursor: pointer;
