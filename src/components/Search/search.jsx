@@ -105,7 +105,7 @@ const Search = (props) => {
         type="text"
         className="search-input"
         name="search"
-        placeholder={props.whosThatPokemonMode ? "Take a guess" : 'Search Pokemon'}
+        placeholder={props.whosThatPokemonMode ? "Who's that Pokemon?" : 'Search Pokemon'}
         autoComplete="off"
         value={search}
         onChange={onChange}
@@ -117,7 +117,7 @@ const Search = (props) => {
         
         className="search-button"
       >
-        Search
+        {props.whosThatPokemonMode ? "Guess!" : 'Search'}
       </button>
       {renderAutocomplete()}
       </div>
