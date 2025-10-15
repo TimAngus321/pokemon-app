@@ -21,11 +21,17 @@ const PokemonCard = ({ pokemonDetails, whosThatPokemonMode }) => {
           >
             {pokemonDetails.name}
           </h2>
-          <div className="hp-types-container">
+          <div
+            className="hp-types-container"
+            style={{ visibility: whosThatPokemonMode ? "hidden" : "visible" }}
+          >
             <h3 className="pokemon-number" data-testid="poke-id-test">
               {pokemonDetails.stats[0].base_stat} HP
             </h3>
-            <div className="type-container">
+            <div
+              className="type-container"
+              style={{ visibility: whosThatPokemonMode ? "hidden" : "visible" }}
+            >
               {pokemonDetails.types.map((type, key) => {
                 const IconComponent = typeIcons[type.type.name];
                 return (
@@ -56,12 +62,18 @@ const PokemonCard = ({ pokemonDetails, whosThatPokemonMode }) => {
               filter: whosThatPokemonMode ? "brightness(0) invert(1)" : "none",
             }}
           />
-          <p className="pokemon-name">
+          <p
+            className="pokemon-name"
+            style={{ visibility: whosThatPokemonMode ? "hidden" : "visible" }}
+          >
             Height: {pokemonDetails.height * 10}cm, Weight:{" "}
             {pokemonDetails.weight} lbs
           </p>
         </div>
-        <div className="stats-container">
+        <div
+          className="stats-container"
+          style={{ visibility: whosThatPokemonMode ? "hidden" : "visible" }}
+        >
           <div>
             <h3>ID: </h3>
             <p>{pokemonDetails.id}</p>

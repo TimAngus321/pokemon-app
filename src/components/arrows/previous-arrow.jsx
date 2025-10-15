@@ -5,6 +5,14 @@ import './arrows.scss';
 
 const PreviousArrow = (props) => {
   return (
+    <div>
+     {props.whosThatPokemonMode ? (
+      <div className="incorrect-answers">
+        <p>Incorrect answers: </p>
+        <p>{props.incorrectAnswersCount}</p>
+      </div>
+    )
+  : (
     <div
       className="left-arrow-container"
       onClick={(e) => props.previousPokemon()}
@@ -13,6 +21,8 @@ const PreviousArrow = (props) => {
         className="left-arrow"
         icon={faArrowLeft}
       />
+    </div>
+    )}
     </div>
   );
 };

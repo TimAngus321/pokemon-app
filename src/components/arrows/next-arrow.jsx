@@ -3,7 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './arrows.scss';
 
 const NextArrow = (props) => {
+  console.log("props.whosThatPokemonMode: ", props);
   return (
+    <div>
+    {props.whosThatPokemonMode ? (
+      <div className="correct-answers">
+        <p>Correct guesses: </p>
+        <p>{props.correctAnswersCount}</p>
+      </div>
+    )
+  : (
     <div
       className="right-arrow-container"
       onClick={(e) => props.nextPokemon()}
@@ -13,6 +22,8 @@ const NextArrow = (props) => {
         icon={faArrowRight}
         className="right-arrow"
       />
+    </div>
+    )}
     </div>
   );
 };

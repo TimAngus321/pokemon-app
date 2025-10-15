@@ -15,6 +15,9 @@ function App() {
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [whosThatPokemonMode, setWhosThatPokemonMode] = useState(false);
+  const [pokemonGuess, setPokemonGuess] = useState(false);
+  const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
+  const [incorrectAnswersCount, setIncorrectAnswersCount] = useState(0);
 
   const lastPokeId = 1025;
   const firstPokemonId = 1;
@@ -36,36 +39,48 @@ function App() {
 
   // All requests dealt with here
   const findPokemon = async (query) => {
-    const pokemonData = await getPokemon(query)
-      if (!pokemonData.status) {
-        setError(false);
-        setPokemon(pokemonData);
-        // console.log(pokemon);
-        return;
-      } else if (pokemonData.status === 404) {
-        setError(true);
-        setErrorMsg("Pokemon not found");
-        return Promise.reject(pokemonData.status);
-      } else {
-        setError(true);
-        setErrorMsg("Unknown problem. Try again later.");
-        return Promise.reject(pokemonData.status);
-      }
+    const pokemonData = await getPokemon(query);
+    if (!pokemonData.status) {
+      setError(false);
+      setPokemon(pokemonData);
+      return;
+    } else if (pokemonData.status === 404) {
+      setError(true);
+      setErrorMsg("Pokemon not found");
+      return Promise.reject(pokemonData.status);
+    } else {
+      setError(true);
+      setErrorMsg("Unknown problem. Try again later.");
+      return Promise.reject(pokemonData.status);
+    }
   };
 
   // Get random pokemon on click
   const whosThatPokemon = () => {
     const randomNumber = Math.floor(Math.random() * 1025) + 1;
-    console.log("randomNumber: ", randomNumber);
     findPokemon(randomNumber);
     setWhosThatPokemonMode(true);
+    console.log(pokemon);
   };
 
   // Get queried pokemon here
   const pokemonSearch = (search) => {
-    setPokemonName(search.toLowerCase());
-    setWhosThatPokemonMode(false);
+    if (whosThatPokemonMode) {
+      whosThatPokemonAttempt(search);
+    } else {
+      setPokemonName(search.toLowerCase());
+    }
   };
+
+  function whosThatPokemonAttempt(guess) {
+    if (guess.toLowerCase() === pokemon.name) {
+      setPokemonGuess(true);
+      setCorrectAnswersCount(correctAnswersCount + 1);
+    } else {
+      setPokemonGuess(false);
+      setIncorrectAnswersCount(incorrectAnswersCount + 1);
+    }
+  }
 
   // // Display previous pokemon on click
   function previousPokemon() {
@@ -74,7 +89,6 @@ function App() {
     } else {
       let previousPokemon = pokemon.id - 1;
       findPokemon(previousPokemon);
-      setWhosThatPokemonMode(false);
     }
   }
 
@@ -85,14 +99,13 @@ function App() {
     } else {
       let nextPokemon = pokemon.id + 1;
       findPokemon(nextPokemon);
-      setWhosThatPokemonMode(false);
     }
   }
 
   // Handle arrow key presses to display next and previous pokemon
   const handleKeyDown = (event) => {
     if (!pokemon) return;
-
+    if (whosThatPokemonMode) return;
     if (event.key === "ArrowRight") {
       event.preventDefault();
       nextPokemon();
@@ -106,15 +119,24 @@ function App() {
     <div className="app-container" tabIndex={0} onKeyDown={handleKeyDown}>
       <div className="left-action-components">
         <div className="action-components-container">
-          <div className="arrows-container">
-            {pokemon ? (
-              <Fragment>
-                <PreviousArrow previousPokemon={previousPokemon} />
-                <WhosThatPokemon whosThatPokemon={whosThatPokemon} />
-                <NextArrow nextPokemon={nextPokemon} />
-              </Fragment>
-            ) : null}
-          </div>
+          {pokemon ? (
+            <div className="arrows-container">
+              <PreviousArrow
+                previousPokemon={previousPokemon}
+                whosThatPokemonMode={whosThatPokemonMode}
+                incorrectAnswersCount={incorrectAnswersCount}
+              />
+              <WhosThatPokemon
+                whosThatPokemon={whosThatPokemon}
+                whosThatPokemonMode={whosThatPokemonMode}
+              />
+              <NextArrow
+                nextPokemon={nextPokemon}
+                whosThatPokemonMode={whosThatPokemonMode}
+                correctAnswersCount={correctAnswersCount}
+              />
+            </div>
+          ) : null}
           <Search
             pokemonSearch={pokemonSearch}
             whosThatPokemonMode={whosThatPokemonMode}

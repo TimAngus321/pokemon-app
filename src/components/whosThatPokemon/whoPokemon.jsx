@@ -1,4 +1,5 @@
 import { ReactComponent as PokeBall } from "../../svgs/pokeball.svg";
+import { ReactComponent as PokeBallActive } from "../../svgs/pokeballActive.svg";
 import styles from "./whoPokemon.module.scss";
 
 const WhosThatPokemon = (props) => {
@@ -7,7 +8,11 @@ const WhosThatPokemon = (props) => {
       className={styles.whosThatPokemon}
       onClick={(e) => props.whosThatPokemon()}
     >
-      <PokeBall alt="Who's that Pokemon?" />
+      {!props.whosThatPokemonMode ? (
+        <PokeBall alt="Who's that Pokemon?" />
+      ) : (
+        <PokeBallActive alt="Who's that Pokemon?" />
+      )}
     </div>
   );
 };
