@@ -5,14 +5,33 @@ export const useWhosThatPokemon = (pokemon, getRandomPokemon) => {
   const [pokemonGuess, setPokemonGuess] = useState(false);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [incorrectAnswersCount, setIncorrectAnswersCount] = useState(0);
+  const [classicMode, setClassicMode] = useState(null); // null, 'classic', or 'allPokemon'
+
+  // Get random Pokemon based on mode (accepts mode parameter to avoid stale state)
+  const getRandomPokemonWithMode = (modeString = classicMode) => {
+    const maxId = modeString === 'classic' ? 151 : 1025;
+    const randomNumber = Math.floor(Math.random() * maxId) + 1;
+    return randomNumber;
+  };
 
   // Start or stop the guessing game
-  const toggleWhosThatPokemon = () => {
+  const toggleWhosThatPokemon = (modeOverride) => {
     if (!whosThatPokemonMode) {
-      getRandomPokemon();
+      // Convert boolean modeOverride to string, or use current classicMode
+      let modeString;
+      if (modeOverride !== undefined) {
+        modeString = modeOverride ? 'classic' : 'allPokemon';
+      } else {
+        modeString = classicMode;
+      }
+      
+      const randomId = getRandomPokemonWithMode(modeString);
+      getRandomPokemon(randomId);
       setWhosThatPokemonMode(true);
     } else {
+      // Stop the game - reset to null
       setWhosThatPokemonMode(false);
+      setClassicMode(null);
     }
   };
 
@@ -33,13 +52,14 @@ export const useWhosThatPokemon = (pokemon, getRandomPokemon) => {
 
   // Handle what happens after a correct answer
   const handleCorrectAnswer = () => {
-    // Show pokemon details (turn off whosThatPokemonMode)
+    // Show pokemon details (turn off whosThatPokemonMode but keep classicMode)
     setWhosThatPokemonMode(false);
     
     // After 3 seconds, get new random pokemon and restart game
     setTimeout(() => {
+      const randomId = getRandomPokemonWithMode(classicMode);
+      getRandomPokemon(randomId);
       setWhosThatPokemonMode(true);
-      getRandomPokemon();
     }, 3000);
   };
 
@@ -48,9 +68,11 @@ export const useWhosThatPokemon = (pokemon, getRandomPokemon) => {
     pokemonGuess,
     correctAnswersCount,
     incorrectAnswersCount,
+    classicMode,
     toggleWhosThatPokemon,
     makeGuess,
     handleCorrectAnswer,
-    setWhosThatPokemonMode
+    setWhosThatPokemonMode,
+    setClassicMode
   };
 };

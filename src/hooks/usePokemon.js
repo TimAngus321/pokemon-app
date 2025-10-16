@@ -64,8 +64,8 @@ export const usePokemon = () => {
     }
   };
 
-  const getRandomPokemon = () => {
-    const randomNumber = Math.floor(Math.random() * lastPokeId) + 1;
+  const getRandomPokemon = (specificId) => {
+    const randomNumber = specificId || Math.floor(Math.random() * lastPokeId) + 1;
     findPokemon(randomNumber);
   };
 

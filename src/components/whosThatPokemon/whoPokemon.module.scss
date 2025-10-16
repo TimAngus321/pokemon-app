@@ -5,17 +5,103 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    
     img {
         width: 50px;
         height: 50px;
     }
-    p {
-        margin: 0;
-        padding: 0;
-    }
     svg {
         overflow: visible;
         height: 100px;
+    }
+}
+
+.pokeBallContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+}
+
+.pokeBallSvg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.pokeBallHalf {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    transition: all 0.2s ease;
+    z-index: 2;
+    
+    &:hover {
+        background-color: rgba(255, 203, 5, 0.2);
+        transform: scale(1.05);
+    }
+    
+    &.selected {
+        background-color: rgba(255, 203, 5, 0.4);
+        box-shadow: 0 0 10px rgba(255, 203, 5, 0.6);
+    }
+}
+
+.topHalf {
+    top: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.bottomHalf {
+    bottom: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.modeLabel {
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2px 6px;
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+.activePokeBall {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    
+    &:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease;
+    }
+}
+
+.gameMode {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+
+    p {
+        padding: 2.5% 0;
+        margin: 0;
     }
 }

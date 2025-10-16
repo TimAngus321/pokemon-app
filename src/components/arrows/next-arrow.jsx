@@ -3,9 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./arrows.scss";
 
 const NextArrow = (props) => {
+  // Show counters if we're in a game session (classicMode is not null)
+  const inGameSession = props.classicMode !== null;
+  
   return (
     <div className="right-arrow-container">
-      {props.whosThatPokemonMode ? (
+      {inGameSession ? (
         <div className="correct-answers">
           <p>
             Correct

@@ -23,13 +23,15 @@ function App() {
 
   const {
     whosThatPokemonMode,
+    pokemonGuess,
     correctAnswersCount,
     incorrectAnswersCount,
+    classicMode,
     toggleWhosThatPokemon,
     makeGuess,
-    handleCorrectAnswer
+    handleCorrectAnswer,
+    setClassicMode
   } = useWhosThatPokemon(pokemon, getRandomPokemon);
-
   const { showConfetti } = useConfetti(correctAnswersCount, handleCorrectAnswer);
 
   // Get queried pokemon here
@@ -64,15 +66,19 @@ function App() {
                 previousPokemon={previousPokemon}
                 whosThatPokemonMode={whosThatPokemonMode}
                 incorrectAnswersCount={incorrectAnswersCount}
+                classicMode={classicMode}
               />
               <WhosThatPokemon
                 whosThatPokemon={toggleWhosThatPokemon}
                 whosThatPokemonMode={whosThatPokemonMode}
+                classicMode={classicMode}
+                setClassicMode={setClassicMode}
               />
               <NextArrow
                 nextPokemon={nextPokemon}
                 whosThatPokemonMode={whosThatPokemonMode}
                 correctAnswersCount={correctAnswersCount}
+                classicMode={classicMode}
               />
             </div>
           ) : null}
