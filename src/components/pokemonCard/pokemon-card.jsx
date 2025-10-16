@@ -77,7 +77,7 @@ const PokemonCard = ({ pokemonDetails, whosThatPokemonMode }) => {
             <div key={key}>
               <h3>
                 {stat.stat.name.includes("special")
-                  ? stat.stat.name.replace("special-", "sp.")
+                  ? stat.stat.name.replace("special-", "sp. ")
                   : stat.stat.name}
                 :
               </h3>

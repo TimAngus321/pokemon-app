@@ -3,6 +3,7 @@ import { ReactComponent as PokeBallActive } from "../../svgs/pokeballActive.svg"
 import styles from "./whoPokemon.module.scss";
 
 const WhosThatPokemon = ({ whosThatPokemon, whosThatPokemonMode, classicMode, setClassicMode }) => {
+  const inGameSession = classicMode !== null;
   const handleTopClick = (e) => {
     e.stopPropagation();
     if (!whosThatPokemonMode) {
@@ -25,7 +26,7 @@ const WhosThatPokemon = ({ whosThatPokemon, whosThatPokemonMode, classicMode, se
 
   return (
     <div className={styles.whosThatPokemon}>
-      {!whosThatPokemonMode ? (
+      {!whosThatPokemonMode && !inGameSession ? (
         <div className={styles.pokeBallContainer}>
           {/* Top half - All Pokemon */}
           <div 
