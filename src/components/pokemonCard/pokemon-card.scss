@@ -24,7 +24,7 @@
 
 .pokemon-card-container {
   height: 100%;
-  width: 90%;
+  width: 95%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -101,6 +101,7 @@ img.pokemon-sprite {
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 7%;
+  column-gap: 2%;
   justify-content: center;
   align-items: center;
   text-transform: capitalize;
@@ -112,7 +113,6 @@ img.pokemon-sprite {
   div {
     display: flex;
     flex-direction: row;
-    gap: 5%;
     p {
       padding: 0;
       margin: 0;

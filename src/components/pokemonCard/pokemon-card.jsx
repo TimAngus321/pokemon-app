@@ -71,7 +71,7 @@ const PokemonCard = ({ pokemonDetails, whosThatPokemonMode }) => {
         >
           <div>
             <h3>ID: </h3>
-            <p>{pokemonDetails.id}</p>
+            <p>&nbsp;{pokemonDetails.id}</p>
           </div>
           {pokemonDetails.stats.slice(1).map((stat, key) => (
             <div key={key}>
@@ -81,7 +81,7 @@ const PokemonCard = ({ pokemonDetails, whosThatPokemonMode }) => {
                   : stat.stat.name}
                 :
               </h3>
-              <p>{stat.base_stat}</p>
+              <p>&nbsp;{stat.base_stat}</p>
             </div>
           ))}
         </div>
