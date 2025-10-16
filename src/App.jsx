@@ -98,6 +98,7 @@ function App() {
           <PokemonCard
             pokemonDetails={pokemon}
             whosThatPokemonMode={whosThatPokemonMode}
+            pokemonGuess={pokemonGuess}
           />
         ) : null}
         {showConfetti && <Confetti />}

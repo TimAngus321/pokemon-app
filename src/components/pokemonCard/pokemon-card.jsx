@@ -3,10 +3,21 @@ import typeColours from "helpers/type-colours.js";
 import typeIcons from "helpers/type-icons.js";
 import "./pokemon-card.scss";
 
-const PokemonCard = ({ pokemonDetails, whosThatPokemonMode }) => {
+const PokemonCard = ({ pokemonDetails, whosThatPokemonMode, pokemonGuess }) => {
+  console.log(whosThatPokemonMode)
+  const getCardClass = () => {
+    let baseClass = "pokemon-card";
+    if (pokemonGuess === true) {
+      baseClass += " correct-guess";
+    } else if (pokemonGuess === false && whosThatPokemonMode) {
+      baseClass += " incorrect-guess";
+    } 
+    return baseClass;
+  };
+
   return (
     <div
-      className="pokemon-card"
+      className={getCardClass()}
     >
       <div className="pokemon-card-container">
         <div className="name-number-container">

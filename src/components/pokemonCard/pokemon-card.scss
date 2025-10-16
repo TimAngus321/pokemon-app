@@ -11,6 +11,51 @@
   align-items: center;
   border: 2px solid $poke-yellow;
   border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+// Correct guess - glow with current border color
+.pokemon-card.correct-guess {
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.6),
+              0 0 40px rgba(255, 193, 7, 0.4),
+              0 0 60px rgba(255, 193, 7, 0.2);
+  animation: correctGlow 3s ease-in-out;
+}
+
+// Incorrect guess - red border with shake
+.pokemon-card.incorrect-guess {
+  border-color: #ef4444;
+  animation: incorrectShake 0.6s ease-in-out;
+}
+
+// Keyframes for correct guess glow
+@keyframes correctGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 193, 7, 0.8),
+                0 0 45px rgba(255, 193, 7, 0.6),
+                0 0 65px rgba(255, 193, 7, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.6),
+                0 0 40px rgba(255, 193, 7, 0.4),
+                0 0 60px rgba(255, 193, 7, 0.2);
+  }
+}
+
+// Keyframes for incorrect guess shake
+@keyframes incorrectShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
 }
 
 @media only screen and (max-width: 400px) {

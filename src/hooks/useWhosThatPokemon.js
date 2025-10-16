@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export const useWhosThatPokemon = (pokemon, getRandomPokemon) => {
   const [whosThatPokemonMode, setWhosThatPokemonMode] = useState(false);
-  const [pokemonGuess, setPokemonGuess] = useState(false);
+  const [pokemonGuess, setPokemonGuess] = useState(null);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [incorrectAnswersCount, setIncorrectAnswersCount] = useState(0);
   const [classicMode, setClassicMode] = useState(null); // null, 'classic', or 'allPokemon'
@@ -42,10 +42,14 @@ export const useWhosThatPokemon = (pokemon, getRandomPokemon) => {
     if (guess.toLowerCase() === pokemon.name.toLowerCase()) {
       setPokemonGuess(true);
       setCorrectAnswersCount(prev => prev + 1);
+      // Reset the visual feedback after animation
+      setTimeout(() => setPokemonGuess(null), 3000);
       return true;
     } else {
       setPokemonGuess(false);
       setIncorrectAnswersCount(prev => prev + 1);
+      // Reset the visual feedback after animation
+      setTimeout(() => setPokemonGuess(null), 1000);
       return false;
     }
   };
