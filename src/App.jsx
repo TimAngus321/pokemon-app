@@ -57,10 +57,14 @@ function App() {
 
   // Get random pokemon on click
   const whosThatPokemon = () => {
+    if (!whosThatPokemonMode) {
     const randomNumber = Math.floor(Math.random() * 1025) + 1;
     findPokemon(randomNumber);
     setWhosThatPokemonMode(true);
     console.log(pokemon);
+    } else if (whosThatPokemonMode) {
+      setWhosThatPokemonMode(false);
+    }
   };
 
   // Get queried pokemon here
