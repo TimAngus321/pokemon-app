@@ -4,14 +4,9 @@ import typeIcons from "helpers/type-icons.js";
 import "./pokemon-card.scss";
 
 const PokemonCard = ({ pokemonDetails, whosThatPokemonMode }) => {
-  // console.log("pokemonDetails: ", pokemonDetails);
-  console.log("whosThatPokemonMode: ", whosThatPokemonMode);
   return (
     <div
       className="pokemon-card"
-      // style={{
-      //   backgroundColor: typeColours[pokemonDetails.types[0].type.name],
-      // }}
     >
       <div className="pokemon-card-container">
         <div className="name-number-container">

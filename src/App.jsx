@@ -1,110 +1,45 @@
 import "./App.scss";
-import { useState, useEffect, Fragment } from "react";
-import { getPokemon } from "./services/get-pokemon";
 import PokemonCard from "components/pokemonCard/pokemon-card";
 import Search from "./components/Search/search";
 import "react-toastify/dist/ReactToastify.css";
 import NextArrow from "./components/arrows/next-arrow";
 import PreviousArrow from "./components/arrows/previous-arrow";
 import WhosThatPokemon from "components/whosThatPokemon/whoPokemon";
+import Confetti from 'react-confetti-boom';
+import { usePokemon } from './hooks/usePokemon';
+import { useWhosThatPokemon } from './hooks/useWhosThatPokemon';
+import { useConfetti } from './hooks/useConfetti';
 
 function App() {
-  const [pokemon, setPokemon] = useState();
-  const [initialPokemon, setInitialPokemon] = useState(false);
-  const [pokemonName, setPokemonName] = useState();
-  const [error, setError] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
-  const [whosThatPokemonMode, setWhosThatPokemonMode] = useState(false);
-  const [pokemonGuess, setPokemonGuess] = useState(false);
-  const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
-  const [incorrectAnswersCount, setIncorrectAnswersCount] = useState(0);
+  const {
+    pokemon,
+    error,
+    errorMsg,
+    setPokemonName,
+    previousPokemon,
+    nextPokemon,
+    getRandomPokemon
+  } = usePokemon();
 
-  const lastPokeId = 1025;
-  const firstPokemonId = 1;
+  const {
+    whosThatPokemonMode,
+    correctAnswersCount,
+    incorrectAnswersCount,
+    toggleWhosThatPokemon,
+    makeGuess,
+    handleCorrectAnswer
+  } = useWhosThatPokemon(pokemon, getRandomPokemon);
 
-  // Get Bulbasaur on load
-  useEffect(() => {
-    if (!initialPokemon) {
-      findPokemon("1");
-      setInitialPokemon(true);
-    }
-  }, [initialPokemon]);
-
-  useEffect(() => {
-    if (!pokemonName) {
-      return;
-    }
-    findPokemon(pokemonName);
-  }, [pokemonName]);
-
-  // All requests dealt with here
-  const findPokemon = async (query) => {
-    const pokemonData = await getPokemon(query);
-    if (!pokemonData.status) {
-      setError(false);
-      setPokemon(pokemonData);
-      return;
-    } else if (pokemonData.status === 404) {
-      setError(true);
-      setErrorMsg("Pokemon not found");
-      return Promise.reject(pokemonData.status);
-    } else {
-      setError(true);
-      setErrorMsg("Unknown problem. Try again later.");
-      return Promise.reject(pokemonData.status);
-    }
-  };
-
-  // Get random pokemon on click
-  const whosThatPokemon = () => {
-    if (!whosThatPokemonMode) {
-    const randomNumber = Math.floor(Math.random() * 1025) + 1;
-    findPokemon(randomNumber);
-    setWhosThatPokemonMode(true);
-    console.log(pokemon);
-    } else if (whosThatPokemonMode) {
-      setWhosThatPokemonMode(false);
-    }
-  };
+  const { showConfetti } = useConfetti(correctAnswersCount, handleCorrectAnswer);
 
   // Get queried pokemon here
   const pokemonSearch = (search) => {
     if (whosThatPokemonMode) {
-      whosThatPokemonAttempt(search);
+      makeGuess(search);
     } else {
       setPokemonName(search.toLowerCase());
     }
   };
-
-  function whosThatPokemonAttempt(guess) {
-    if (guess.toLowerCase() === pokemon.name) {
-      setPokemonGuess(true);
-      setCorrectAnswersCount(correctAnswersCount + 1);
-    } else {
-      setPokemonGuess(false);
-      setIncorrectAnswersCount(incorrectAnswersCount + 1);
-    }
-  }
-
-  // // Display previous pokemon on click
-  function previousPokemon() {
-    if (pokemon.id === firstPokemonId) {
-      findPokemon(lastPokeId);
-    } else {
-      let previousPokemon = pokemon.id - 1;
-      findPokemon(previousPokemon);
-    }
-  }
-
-  // // Display next pokemon on click
-  function nextPokemon() {
-    if (pokemon.id === lastPokeId) {
-      findPokemon("1");
-    } else {
-      let nextPokemon = pokemon.id + 1;
-      findPokemon(nextPokemon);
-    }
-  }
 
   // Handle arrow key presses to display next and previous pokemon
   const handleKeyDown = (event) => {
@@ -131,7 +66,7 @@ function App() {
                 incorrectAnswersCount={incorrectAnswersCount}
               />
               <WhosThatPokemon
-                whosThatPokemon={whosThatPokemon}
+                whosThatPokemon={toggleWhosThatPokemon}
                 whosThatPokemonMode={whosThatPokemonMode}
               />
               <NextArrow
@@ -159,6 +94,7 @@ function App() {
             whosThatPokemonMode={whosThatPokemonMode}
           />
         ) : null}
+        {showConfetti && <Confetti />}
       </div>
     </div>
   );

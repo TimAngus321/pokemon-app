@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./arrows.scss";
 
 const NextArrow = (props) => {
-  console.log("props.whosThatPokemonMode: ", props);
   return (
     <div className="right-arrow-container">
       {props.whosThatPokemonMode ? (

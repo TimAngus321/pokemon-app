@@ -7,7 +7,7 @@ const PreviousArrow = (props) => {
     <div className="left-arrow-container">
       {props.whosThatPokemonMode ? (
         <div className="incorrect-answers">
-          <p>Incorrect answers: </p>
+          <p>Incorrect guesses: </p>
           <p>{props.incorrectAnswersCount}</p>
         </div>
       ) : (

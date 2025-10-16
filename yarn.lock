@@ -8213,6 +8213,11 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-confetti-boom@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-confetti-boom/-/react-confetti-boom-2.0.1.tgz#93206bdf4d06ce6a1e6481f43c8e00cf011d88fc"
+  integrity sha512-1Uy3JY8czl6yvIAICb+1xLCHLWtUqdNj16ebYBGc5YunGzR4yiP6wSvwYPBeEGZ6/ZjHWgXyVmdDW1ssbpC/Mg==
+
 react-dev-utils@^12.0.0:
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-12.0.1.tgz#ba92edb4a1f379bd46ccd6bcd4e7bc398df33e73"
