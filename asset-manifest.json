@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/pokemon-app/static/css/main.8a74f11b.css",
-    "main.js": "/pokemon-app/static/js/main.4a9e1384.js",
-    "static/js/453.9370457b.chunk.js": "/pokemon-app/static/js/453.9370457b.chunk.js",
+    "main.css": "/pokemon-app/static/css/main.d066853b.css",
+    "main.js": "/pokemon-app/static/js/main.ddbfc4cb.js",
+    "static/js/453.1ad809d2.chunk.js": "/pokemon-app/static/js/453.1ad809d2.chunk.js",
     "static/media/dragon.svg": "/pokemon-app/static/media/dragon.9ee1dc21a0c16cf0dfe3937a8da3cad8.svg",
     "static/media/pokeballActive.svg": "/pokemon-app/static/media/pokeballActive.acb493398c8f4c343f4912ce28687128.svg",
     "static/media/pokeball.svg": "/pokemon-app/static/media/pokeball.6a2179e4e949e933c606a70c6b282216.svg",
@@ -24,12 +24,12 @@
     "static/media/electric.svg": "/pokemon-app/static/media/electric.d3750b82cba27e9d4a8db042d0fcc31f.svg",
     "static/media/grass.svg": "/pokemon-app/static/media/grass.e4b91dad74ab64e30056672f0bf41789.svg",
     "static/media/normal.svg": "/pokemon-app/static/media/normal.82ba4e91ac62a085989ef37b3ebb34a7.svg",
-    "main.8a74f11b.css.map": "/pokemon-app/static/css/main.8a74f11b.css.map",
-    "main.4a9e1384.js.map": "/pokemon-app/static/js/main.4a9e1384.js.map",
-    "453.9370457b.chunk.js.map": "/pokemon-app/static/js/453.9370457b.chunk.js.map"
+    "main.d066853b.css.map": "/pokemon-app/static/css/main.d066853b.css.map",
+    "main.ddbfc4cb.js.map": "/pokemon-app/static/js/main.ddbfc4cb.js.map",
+    "453.1ad809d2.chunk.js.map": "/pokemon-app/static/js/453.1ad809d2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8a74f11b.css",
-    "static/js/main.4a9e1384.js"
+    "static/css/main.d066853b.css",
+    "static/js/main.ddbfc4cb.js"
   ]
 }
