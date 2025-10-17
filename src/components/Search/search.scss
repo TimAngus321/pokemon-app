@@ -1,6 +1,6 @@
 /************ Search Component ***************/
 
-@import "styles/_index.scss";
+@use "../../styles/_index.scss" as *;
 
 .search-bar-container {
   display: flex;

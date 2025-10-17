@@ -1,6 +1,6 @@
 /************ Pokemon Card ***************/
 
-@import "styles/_index.scss";
+@use "../../styles/_index.scss" as *;
 
 .pokemon-card {
   width: 350px;

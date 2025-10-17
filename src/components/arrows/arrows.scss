@@ -1,6 +1,6 @@
 /************ Arrow Buttons ***************/
 
-@import "styles/_index.scss";
+@use "../../styles/_index.scss" as *;
 
 .arrows-container {
   display: flex;
