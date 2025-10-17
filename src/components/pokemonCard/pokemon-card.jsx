@@ -4,7 +4,6 @@ import typeIcons from "helpers/type-icons.js";
 import "./pokemon-card.scss";
 
 const PokemonCard = ({ pokemonDetails, whosThatPokemonMode, pokemonGuess }) => {
-  console.log(whosThatPokemonMode)
   const getCardClass = () => {
     let baseClass = "pokemon-card";
     if (pokemonGuess === true) {
