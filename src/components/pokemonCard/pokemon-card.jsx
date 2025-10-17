@@ -31,7 +31,7 @@ const PokemonCard = ({ pokemonDetails, whosThatPokemonMode, pokemonGuess }) => {
             className="hp-types-container"
             style={{ visibility: whosThatPokemonMode ? "hidden" : "visible" }}
           >
-            <h3 className="pokemon-number" data-testid="poke-id-test">
+            <h3 className="pokemon-number">
               {pokemonDetails.stats[0].base_stat} HP
             </h3>
             <div
@@ -80,9 +80,9 @@ const PokemonCard = ({ pokemonDetails, whosThatPokemonMode, pokemonGuess }) => {
           className="stats-container"
           style={{ visibility: whosThatPokemonMode ? "hidden" : "visible" }}
         >
-          <div>
+          <div >
             <h3>ID: </h3>
-            <p>&nbsp;{pokemonDetails.id}</p>
+            <p data-testid="poke-id-test">&nbsp;{pokemonDetails.id}</p>
           </div>
           {pokemonDetails.stats.slice(1).map((stat, key) => (
             <div key={key}>

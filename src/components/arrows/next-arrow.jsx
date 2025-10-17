@@ -7,7 +7,7 @@ const NextArrow = (props) => {
   const inGameSession = props.classicMode !== null;
   
   return (
-    <div className="right-arrow-container">
+    <div className="right-arrow-container" data-testid="next-arrow-test">
       {inGameSession ? (
         <div className="correct-answers">
           <p>
@@ -17,7 +17,7 @@ const NextArrow = (props) => {
           <p>{props.correctAnswersCount}</p>
         </div>
       ) : (
-        <div onClick={(e) => props.nextPokemon()} data-testid="next-arrow-test">
+        <div onClick={(e) => props.nextPokemon()} >
           <FontAwesomeIcon icon={faArrowRight} className="right-arrow" />
         </div>
       )}
