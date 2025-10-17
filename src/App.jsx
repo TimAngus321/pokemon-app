@@ -1,7 +1,6 @@
 import "./App.scss";
 import PokemonCard from "components/pokemonCard/pokemon-card";
 import Search from "./components/Search/search";
-import "react-toastify/dist/ReactToastify.css";
 import NextArrow from "./components/arrows/next-arrow";
 import PreviousArrow from "./components/arrows/previous-arrow";
 import WhosThatPokemon from "components/whosThatPokemon/whoPokemon";
