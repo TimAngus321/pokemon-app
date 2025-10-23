@@ -1,14 +1,14 @@
-# Pokemon App
+# Pokémon App
 
 **Pokemon Search is a react app that performs the following taks:**
 
-- Web page that allows user to enter a pokemon name
+- Web page that allows user to enter a Pokémon name
 
 - Submit a query to Pokeapi and display the given pokémon's name, number, sprite or error message if no match is found
 
-- Provide “Previous” & “Next” buttons, that switch to the previous/next pokemons, based on their id number
+- Provide “Previous” & “Next” buttons, that switch to the previous/next Pokémon, based on their ID number
 
-- Provide a text-based search feature, where inputting a name or partial name should look for a matching pokemon and show it
+- Provide a text-based search feature, where inputting a name or partial name should look for a matching Pokémon and show it
 
 - Add automated tests for the features above. 
 
