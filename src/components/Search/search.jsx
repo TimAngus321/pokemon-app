@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getPokemonNames } from "services/get-pokemon-names";
-import './search.scss';
+import "./search.scss";
 
 const Search = (props) => {
   const [search, setSearch] = useState("");
@@ -9,15 +9,16 @@ const Search = (props) => {
   const [active, setActive] = useState(0);
   const [filtered, setFiltered] = useState([]);
   const [isShow, setIsShow] = useState(false);
+  const inputRef = useRef(null);
 
   //   Get all pokemon names
   useEffect(() => {
     (async function getAllPokeNames() {
-        setIsLoading(true);
-        const pokeNames = await getPokemonNames();
-        const allPokeNames = pokeNames;
-        setPokemonNames(allPokeNames);
-        setIsLoading(false);
+      setIsLoading(true);
+      const pokeNames = await getPokemonNames();
+      const allPokeNames = pokeNames;
+      setPokemonNames(allPokeNames);
+      setIsLoading(false);
     })();
   }, []);
 
@@ -31,9 +32,8 @@ const Search = (props) => {
   const onChange = (e) => {
     const inputValue = e.currentTarget.value;
     if (allPokmonNames !== "[]") {
-      const newFilteredSuggestions = allPokmonNames.filter(
-        (suggestion) =>
-          suggestion.toLowerCase().startsWith(inputValue.toLowerCase())
+      const newFilteredSuggestions = allPokmonNames.filter((suggestion) =>
+        suggestion.toLowerCase().startsWith(inputValue.toLowerCase())
       );
       setActive(0);
       setFiltered(newFilteredSuggestions);
@@ -49,7 +49,14 @@ const Search = (props) => {
     setIsShow(false);
     setSearch(e.currentTarget.innerText);
   };
-// Use up and down arrow and press enter to select from dropdown
+
+  // Handle input focus to prevent scroll on mobile
+  const handleFocus = (e) => {
+    e.preventDefault();
+    window.scrollTo(0, 0);
+  };
+
+  // Use up and down arrow and press enter to select from dropdown
   const onKeyDown = (e) => {
     if (e.keyCode === 13) {
       // enter key
@@ -73,25 +80,26 @@ const Search = (props) => {
     }
   };
 
-
   // Injects Autocomplete into dom if user starts inputing text into input
   const renderAutocomplete = () => {
     if (isShow && search) {
       if (filtered.length) {
         return (
-          <ul className="autocomplete">
-            {filtered.map((suggestion, index) => {
-              let className;
-              if (index === active) {
-                className = "active";
-              }
-              return (
-                <li className={className} key={suggestion} onClick={onClick} >
-                  {suggestion}
-                </li>
-              );
-            })}
-          </ul>
+          <output>
+            <ul className="autocomplete">
+              {filtered.map((suggestion, index) => {
+                let className;
+                if (index === active) {
+                  className = "active";
+                }
+                return (
+                  <li className={className} key={suggestion} onClick={onClick}>
+                    {suggestion}
+                  </li>
+                );
+              })}
+            </ul>
+          </output>
         );
       }
     }
@@ -100,26 +108,29 @@ const Search = (props) => {
 
   return (
     <div className="search-bar-container">
-    <div className="search-control">
-      <input
-        type="text"
-        className="search-input"
-        name="search"
-        placeholder={props.whosThatPokemonMode ? "Who's that Pokemon?" : 'Search Pokemon'}
-        autoComplete="off"
-        value={search}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        onClick={onClick}
-      />
-      <button
-        onClick={(e) => props.pokemonSearch(search)}
-        
-        className="search-button"
-      >
-        {props.whosThatPokemonMode ? "Guess!" : 'Search'}
-      </button>
-      {renderAutocomplete()}
+      <div className="search-control">
+        <input
+          ref={inputRef}
+          type="text"
+          className="search-input"
+          name="search"
+          placeholder={
+            props.whosThatPokemonMode ? "Who's that Pokemon?" : "Search Pokemon"
+          }
+          autoComplete="off"
+          value={search}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          onClick={onClick}
+          onFocus={handleFocus}
+        />
+        <button
+          onClick={(e) => props.pokemonSearch(search)}
+          className="search-button"
+        >
+          {props.whosThatPokemonMode ? "Guess!" : "Search"}
+        </button>
+        {renderAutocomplete()}
       </div>
     </div>
   );
