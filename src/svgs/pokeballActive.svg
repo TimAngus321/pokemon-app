@@ -12,14 +12,14 @@
   <!-- Top curved text -->
   <text font-family="Arial, sans-serif" font-size="11" fill="#FFD800" font-weight="bold" stroke="#000" stroke-width="0.5">
     <textPath href="#top-curve" startOffset="50%" text-anchor="middle">
-      Who's that
+      Reveal that
     </textPath>
   </text>
   
   <!-- Bottom curved text -->
   <text font-family="Arial, sans-serif" font-size="11" fill="#FFD800" font-weight="bold" stroke="#000" stroke-width="0.5">
     <textPath href="#bottom-curve" startOffset="50%" text-anchor="middle">
-      Pokemon?
+      Pokemon!
     </textPath>
   </text>
 </svg>
